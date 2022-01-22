@@ -53,6 +53,9 @@ input:checked + .slider::before {
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
+  display: flex;
+  align-items: center;
+  padding-left: 5px;
 }
 
 .slider.round::before {

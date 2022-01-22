@@ -3,6 +3,7 @@ import Headroom from "react-headroom";
 import "./Header.scss";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import StyleContext from "../../contexts/StyleContext";
+import {useTranslation} from "react-i18next";
 import {
   greeting,
   workExperiences,
@@ -13,6 +14,11 @@ import {
   achievementSection
 } from "../../portfolio";
 
+const lngs = {
+  en: {nativeName: "English"},
+  es: {nativeName: "Español"}
+};
+
 function Header() {
   const {isDark} = useContext(StyleContext);
   const viewExperience = workExperiences.display;
@@ -21,6 +27,7 @@ function Header() {
   const viewAchievement = achievementSection.display;
   const viewBlog = blogSection.display;
   const viewTalks = talkSection.display;
+  const {i18n} = useTranslation();
 
   return (
     <Headroom>
@@ -71,6 +78,15 @@ function Header() {
           )}
           <li>
             <a href="#contact">Contact Me</a>
+          </li>
+          <li id="lang">
+            <select
+              value={i18n.language}
+              onChange={e => i18n.changeLanguage(e.target.value)}
+            >
+              <option value="en">English</option>
+              <option value="es">Español</option>
+            </select>
           </li>
           <li>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

@@ -12,11 +12,13 @@
   color: $textColorDark;
 }
 
-.dark-menu li a {
+.dark-menu li a,
+.dark-menu li#lang {
   color: $textColorDark !important;
 }
 
-.dark-menu li a:hover {
+.dark-menu li a:hover,
+.dark-menu li#lang:hover {
   background-color: $buttonColor !important;
 }
 
@@ -38,15 +40,18 @@
   color: $subTitle;
 }
 
-.header li a {
+.header li a,
+.header li#lang  {
   display: block;
   padding: 15px 20px;
   color: $textColor;
   text-decoration: none;
 }
 
+
 .header li a:hover,
-.header .menu-btn:hover {
+.header .menu-btn:hover,
+.header li#lang:hover {
   background-color: $headerHoverBG;
 }
 
@@ -61,7 +66,7 @@
 }
 
 .header .logo-name {
-  font-family: "Agustina Regular";
+  font-family: "Courier New";
   font-weight: bold;
   font-variant-ligatures: no-common-ligatures;
   -webkit-font-variant-ligatures: no-common-ligatures;

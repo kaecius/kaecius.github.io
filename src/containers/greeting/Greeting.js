@@ -6,12 +6,16 @@ import landingPerson from "../../assets/lottie/landingPerson";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
 import Button from "../../components/button/Button";
+import {Trans, useTranslation} from "react-i18next";
 
 import {illustration, greeting} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 
+
 export default function Greeting() {
   const {isDark} = useContext(StyleContext);
+  const { i18n } = useTranslation(); 
+  
   if (!greeting.displayGreeting) {
     return null;
   }
@@ -24,9 +28,11 @@ export default function Greeting() {
               <h1
                 className={isDark ? "dark-mode greeting-text" : "greeting-text"}
               >
-                {" "}
-                {greeting.title}{" "}
-                <span className="wave-emoji">{emoji("👋")}</span>
+                <Trans
+                  i18nKey="greeting.title"
+                  values={{name: greeting.username}}
+                />
+                <span className="wave-emoji">{emoji("😀")}</span>
               </h1>
               <p
                 className={
@@ -35,7 +41,7 @@ export default function Greeting() {
                     : "greeting-text-p subTitle"
                 }
               >
-                {greeting.subTitle}
+                <Trans i18nKey="greeting.subtitle" />
               </p>
               <SocialMedia />
               <div className="button-greeting-div">
@@ -51,14 +57,10 @@ export default function Greeting() {
             </div>
           </div>
           <div className="greeting-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={landingPerson} />
-            ) : (
-              <img
-                alt="man sitting on table"
-                src={require("../../assets/images/manOnTable.svg")}
-              ></img>
-            )}
+            <img
+              alt="man sitting on table"
+              src={require("../../assets/images/profile.jpg")}
+            ></img>
           </div>
         </div>
       </div>

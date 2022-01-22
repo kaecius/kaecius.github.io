@@ -26,12 +26,12 @@
 }
 
 .greeting-main > * {
-  flex: 1;
   margin-bottom: 30px;
 }
 .button-greeting-div {
   display: flex;
   margin-top: 20px;
+  justify-content: space-between;
 }
 
 .greeting-text {
@@ -45,9 +45,28 @@
   line-height: 40px;
 }
 
+.greeting-text-div {
+  flex: 1;
+}
+
+.greeting-image-div {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
 .greeting-image-div > img {
-  max-width: 100%;
-  height: auto;
+  max-width: 80%;
+  border-radius: 100%;
+  border-style: solid;
+  height: 50%;
+  border-width: 5px;
+  // margin-left: auto;
+  // margin-right: auto;
+  // margin-top:auto;
+  // display: block;
 }
 
 .wave-emoji {
@@ -108,7 +127,7 @@
     display: block;
   }
   .greeting-image-div {
-    height: 256px;
+    height: 100%;
   }
 }
 
