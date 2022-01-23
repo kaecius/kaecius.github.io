@@ -169,6 +169,7 @@
 }
 
 li#lang > select {
+  font-family: "Montserrat", sans-serif;
   background-color: transparent;
   border: none;
   border-radius: 0;
@@ -216,5 +217,11 @@ li#lang > select option {
 @media (max-width: 960px) and (min-width: 768px) {
   .header {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .logo {
+    font-size: 0.8em;
   }
 }
