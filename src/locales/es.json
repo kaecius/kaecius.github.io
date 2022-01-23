@@ -15,5 +15,17 @@
     "contact.me": "Contacta",
     "education": "Educación",
     "download.cv": "Descargar CV"
+  },
+  "skills": {
+    "title": "Tecnologías",
+    "subtitle": "Tecnologías y herramientas que he utilizado.",
+    "list": {
+      "title": "",
+      "1": "He realizado diversos desarrollos con las líbrerías de Machine Learning y análisis de datos más usadas en python, <strong>Tensorflow, Keras, scikit-learn, scipy, numpy, pandas, matplotlib, seaborn, etc</strong>.",
+      "2": "He realizado diversos desarrollos web con <strong>Java Spring, Spring Boot, Grails, Laravel, etc.</strong>.",
+      "3": "He utilizado <strong>PostgreSQL</strong> y <strong>Grafana</strong> para análisis de datos a tiempo real y grande volúmenes de datos además de visualizaciones de datos.",
+      "4": "He realizado diversos desarrollos personales basados en <strong>nodejs</strong> y <strong>Electron</strong>.",
+      "5": "Desarrollo muy orientado al uso de <strong>contenedores Docker, Git y Git Flow</strong>."
+    }
   }
 }

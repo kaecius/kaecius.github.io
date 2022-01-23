@@ -15,5 +15,17 @@
     "contact.me": "Contact me",
     "education": "Education",
     "download.cv": "Download CV"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies and tools I have used",
+    "list": {
+      "title": "",
+      "1": "Developments with the most used Machine Learning and data analysis libraries in Python, <strong>Tensorflow, Keras, scikit-learn, scipy, numpy, pandas, matplotlib, seaborn, etc.</strong>.",
+      "2": "Web developments with <strong>Java Spring, Spring Boot, Grails, Laravel, etc.</strong>.",
+      "3": "Use of <strong>PostgreSQL</strong> and <strong>Grafana</strong> pfor real-time and big data analysis and data visualizations.",
+      "4": "Use of <strong>nodejs</strong> and <strong>Electron</strong> in personal projects.",
+      "5": "Development very oriented to the use of <strong>Docker containers, Git and Git Flow</strong>"
+    }
   }
 }
