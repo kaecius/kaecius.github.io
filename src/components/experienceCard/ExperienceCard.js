@@ -1,10 +1,12 @@
 import React, {useState, createRef} from "react";
 import "./ExperienceCard.scss";
 import ColorThief from "colorthief";
+import { useTranslation, Trans } from "react-i18next";
 
 export default function ExperienceCard({cardInfo, isDark}) {
   const [colorArrays, setColorArrays] = useState([]);
   const imgRef = createRef();
+  const i18n = useTranslation();
 
   function getColorArrays() {
     const colorThief = new ColorThief();
@@ -24,7 +26,7 @@ export default function ExperienceCard({cardInfo, isDark}) {
             key={i}
             className={isDark ? "subTitle dark-mode-text" : "subTitle"}
           >
-            {item}
+            {i18n.t(item)}
           </li>
         ))
       : null;
@@ -55,7 +57,7 @@ export default function ExperienceCard({cardInfo, isDark}) {
               : "experience-text-role"
           }
         >
-          {cardInfo.role}
+          {i18n.t(cardInfo.role)}
         </h5>
         <h5
           className={
@@ -64,7 +66,7 @@ export default function ExperienceCard({cardInfo, isDark}) {
               : "experience-text-date"
           }
         >
-          {cardInfo.date}
+          {i18n.t(cardInfo.date)}
         </h5>
         <p
           className={
@@ -73,7 +75,7 @@ export default function ExperienceCard({cardInfo, isDark}) {
               : "subTitle experience-text-desc"
           }
         >
-          {cardInfo.desc}
+          {i18n.t(cardInfo.desc)}
         </p>
         <ul>
           <GetDescBullets descBullets={cardInfo.descBullets} isDark={isDark} />

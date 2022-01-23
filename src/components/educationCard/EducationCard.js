@@ -2,8 +2,10 @@ import React, {createRef, useContext} from "react";
 import {Fade, Slide} from "react-reveal";
 import "./EducationCard.scss";
 import StyleContext from "../../contexts/StyleContext";
+import {useTranslation, Trans} from "react-i18next";
 
 export default function EducationCard({school}) {
+  const i18n = useTranslation();
   const imgRef = createRef();
 
   const GetDescBullets = ({descBullets}) => {
@@ -33,8 +35,9 @@ export default function EducationCard({school}) {
             />
           </div>
           <div className="education-card-right">
-            <h5 className="education-text-school">{school.schoolName}</h5>
-
+            <h5 className="education-text-school">
+              <Trans i18nKey={school.schoolName}></Trans>
+            </h5>
             <div className="education-text-details">
               <h5
                 className={
@@ -43,7 +46,7 @@ export default function EducationCard({school}) {
                     : "education-text-subHeader"
                 }
               >
-                {school.subHeader}
+                <Trans i18nKey={school.subHeader}></Trans>
               </h5>
               <p
                 className={`${

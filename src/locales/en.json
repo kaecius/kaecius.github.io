@@ -27,5 +27,35 @@
       "4": "Use of <strong>nodejs</strong> and <strong>Electron</strong> in personal projects.",
       "5": "Development very oriented to the use of <strong>Docker containers, Git and Git Flow</strong>"
     }
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "Academic and professional education",
+    "upv": "Basque Country University (UPV/EHU)",
+    "degree.title": "Bachelor's degree in Informatics Engineering with mentions in Computing",
+    "zabalburu": "Colegio Zabalburu",
+    "zabal.title": "Certificate of Higher Education in Web Applications development"
+  },
+  "work": {
+    "title": "Work experience",
+    "ideable": {
+      "role": "Software Engineer",
+      "date": "July 2021 - Present",
+      "description": "Part of the technical office, where we focus on solving problems that are out of the ordinary in software development.",
+      "bullet": {
+        "1": "Development with big data.",
+        "2": "Analysis of the latest technologies.",
+        "3": "Implementation of state-of-the-art AI in different domains, Human Activity Recognition, Anomaly Detection, etc.",
+        "4": "Web scraping."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch with me",
+    "thanks": "Thanks for your message!",
+    "email": "Email",
+    "message": "Write me a message",
+    "submit": "Send"
   }
 }

@@ -18,7 +18,7 @@
   },
   "skills": {
     "title": "Tecnologías",
-    "subtitle": "Tecnologías y herramientas que he utilizado.",
+    "subtitle": "Tecnologías y herramientas que he utilizado",
     "list": {
       "title": "",
       "1": "He realizado diversos desarrollos con las líbrerías de Machine Learning y análisis de datos más usadas en python, <strong>Tensorflow, Keras, scikit-learn, scipy, numpy, pandas, matplotlib, seaborn, etc</strong>.",
@@ -27,5 +27,35 @@
       "4": "He realizado diversos desarrollos personales basados en <strong>nodejs</strong> y <strong>Electron</strong>.",
       "5": "Desarrollo muy orientado al uso de <strong>contenedores Docker, Git y Git Flow</strong>."
     }
+  },
+  "education": {
+    "title": "Educación",
+    "subtitle": "Educación académica y profesional.",
+    "upv": "Universidad del País Vasco (UPV/EHU)",
+    "degree.title": "Ingeniería informática con especialidad en Computación",
+    "zabalburu": "Colegio Zabalburu",
+    "zabal.title": "Grado Superior en Desarrollo de Aplicaciones Web"
+  },
+  "work":{
+    "title": "Experiencia Laboral",
+    "ideable":{
+      "role": "Ingeniero de software",
+      "date": "Julio 2021 - Actualidad",
+      "description": "Parte de la oficina técnica, donde nos centramos en resolver problemas que se salen de lo común dentro del desarrollo de software.",
+      "bullet": {
+        "1": "Desarrollo contra grande volúmenes de datos",
+        "2": "Análisis de las tecnologías más actuales",
+        "3": "Implementación del estado del arte en IA sobre diferentes ámbitos, Human Activity Recognition, Detección de Anomalías, etc.",
+        "4": "Web scraping"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contacta",
+    "subtitle": "¿Quieres contactarme?",
+    "thanks": "¡Gracias por contactarme!",
+    "email": "Email",
+    "message": "Escribe tu mensaje",
+    "submit": "Enviar"
   }
 }

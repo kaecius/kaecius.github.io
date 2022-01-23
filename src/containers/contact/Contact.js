@@ -6,15 +6,21 @@ import {Fade} from "react-reveal";
 import email from "../../assets/lottie/email";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import StyleContext from "../../contexts/StyleContext";
+import ContactForm from "../../components/contactForm/ContactForm";
+import {useTranslation, Trans} from "react-i18next";
 
 export default function Contact() {
   const {isDark} = useContext(StyleContext);
+  const i18n = useTranslation();
+
   return (
     <Fade bottom duration={1000} distance="20px">
       <div className="main contact-margin-top" id="contact">
         <div className="contact-div-main">
           <div className="contact-header">
-            <h1 className="heading contact-title">{contactInfo.title}</h1>
+            <h1 className="heading contact-title">
+              <Trans i18nKey={contactInfo.title}></Trans>
+            </h1>
             <p
               className={
                 isDark
@@ -22,45 +28,18 @@ export default function Contact() {
                   : "subTitle contact-subtitle"
               }
             >
-              {contactInfo.subtitle}
+              <Trans i18nKey={contactInfo.subtitle}></Trans>
             </p>
-            <div
-              className={
-                isDark ? "dark-mode contact-text-div" : "contact-text-div"
-              }
-            >
-              {contactInfo.number && (
-                <>
-                  <a
-                    className="contact-detail"
-                    href={"tel:" + contactInfo.number}
-                  >
-                    {contactInfo.number}
-                  </a>
-                  <br />
-                  <br />
-                </>
-              )}
-              <a
-                className="contact-detail-email"
-                href={"mailto:" + contactInfo.email_address}
-              >
-                {contactInfo.email_address}
-              </a>
-              <br />
-              <br />
-              <SocialMedia />
-            </div>
           </div>
-          <div className="contact-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={email} />
-            ) : (
-              <img
-                alt="Man working"
-                src={require("../../assets/images/contactMailDark.svg")}
-              ></img>
-            )}
+          <div
+            className={
+              isDark ? "dark-mode contact-text-div" : "contact-text-div"
+            }
+          >
+            <ContactForm />
+            <br />
+            <br />
+            <SocialMedia />
           </div>
         </div>
       </div>

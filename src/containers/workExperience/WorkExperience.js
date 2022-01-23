@@ -4,8 +4,10 @@ import ExperienceCard from "../../components/experienceCard/ExperienceCard";
 import {workExperiences} from "../../portfolio";
 import {Fade} from "react-reveal";
 import StyleContext from "../../contexts/StyleContext";
+import {useTranslation, Trans} from "react-i18next";
 
 export default function WorkExperience() {
+  const i18n = useTranslation();
   const {isDark} = useContext(StyleContext);
   if (workExperiences.display) {
     return (
@@ -13,7 +15,9 @@ export default function WorkExperience() {
         <Fade bottom duration={1000} distance="20px">
           <div className="experience-container" id="workExperience">
             <div>
-              <h1 className="experience-heading">Experiences</h1>
+              <h1 className="experience-heading">
+                <Trans i18nKey="work.title"></Trans>
+              </h1>
               <div className="experience-cards-div">
                 {workExperiences.experience.map((card, i) => {
                   return (

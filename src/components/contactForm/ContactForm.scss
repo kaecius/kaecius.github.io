@@ -1,0 +1,48 @@
+@import "../../_globalColor";
+
+.dark-mode {
+    background-color: $darkBackground !important;
+    color: $textColorDark !important;
+  }
+
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: $lightBackground1;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    color: $textColor;
+    border: 1px solid $lightBorder1;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.contact-form input{
+    width: 100%;
+    padding: 10px;
+    font-size: 2em;
+    border: 1px solid $textColor;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.contact-form textarea{
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid $textColor;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    height: 20em;
+    outline: none;
+}

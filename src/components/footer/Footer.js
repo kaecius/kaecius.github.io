@@ -3,6 +3,7 @@ import "./Footer.scss";
 import {Fade} from "react-reveal";
 import emoji from "react-easy-emoji";
 import StyleContext from "../../contexts/StyleContext";
+import {greeting} from "../../portfolio";
 
 export default function Footer() {
   const {isDark} = useContext(StyleContext);
@@ -11,6 +12,9 @@ export default function Footer() {
       <div className="footer-div">
         <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
           {emoji("Made with ❤️ by DeveloperFolio Team")}
+        </p>
+        <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
+          {emoji("Adapted also with ❤️ by " + greeting.username)}
         </p>
         <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
           Theme by{" "}
