@@ -165,8 +165,23 @@ const workExperiences = {
         "work.ideable.bullet.1",
         "work.ideable.bullet.2",
         "work.ideable.bullet.3",
-        "work.ideable.bullet.4",
+        "work.ideable.bullet.4"
       ]
+    },
+    {
+      role: "work.ideableintern.role",
+      company: "Ideable",
+      companylogo: require("./assets/images/ideable.jpg"),
+      date: "work.ideableintern.date",
+      desc: "work.ideableintern.description"
+    },
+    {
+      role: "work.zylk.role",
+      company: "Zylk",
+      companylogo: require("./assets/images/zylk.jpg"),
+      date: "work.zylk.date",
+      desc: "work.zylk.description",
+      descBullets: ["work.zylk.bullet.1", "work.zylk.bullet.2"]
     }
   ]
 };
@@ -328,8 +343,7 @@ const podcastSection = {
 
 const contactInfo = {
   title: "contact.title",
-  subtitle:
-    "contact.subtitle",
+  subtitle: "contact.subtitle"
 };
 
 // Twitter Section

@@ -36,9 +36,9 @@
     "zabalburu": "Colegio Zabalburu",
     "zabal.title": "Grado Superior en Desarrollo de Aplicaciones Web"
   },
-  "work":{
+  "work": {
     "title": "Experiencia Laboral",
-    "ideable":{
+    "ideable": {
       "role": "Ingeniero de software",
       "date": "Julio 2021 - Actualidad",
       "description": "Parte de la oficina técnica, donde nos centramos en resolver problemas que se salen de lo común dentro del desarrollo de software.",
@@ -47,6 +47,20 @@
         "2": "Análisis de las tecnologías más actuales",
         "3": "Implementación del estado del arte en IA sobre diferentes ámbitos, Human Activity Recognition, Detección de Anomalías, etc.",
         "4": "Web scraping"
+      }
+    },
+    "ideableintern": {
+      "role": "Ingeniero de software",
+      "date": "Junio 2020 - Septiembre 2020",
+      "description": "Desarrollo web usando Grails"
+    },
+    "zylk": {
+      "role": "Desarrollador Java",
+      "date": "Marzo 2017 - Mayo 2017",
+      "description": "Prácticas de desarrollo de aplicaciones web en Java, desarrollando bajo Alfresco.",
+      "bullet": {
+        "1": "Desarrollo diverso para la gestión de contenidos en Alfresco",
+        "2": "Desarrollo con alta concurrencia"
       }
     }
   },

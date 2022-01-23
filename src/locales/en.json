@@ -48,6 +48,15 @@
         "3": "Implementation of state-of-the-art AI in different domains, Human Activity Recognition, Anomaly Detection, etc.",
         "4": "Web scraping."
       }
+    },
+    "zylk": {
+      "role": "Java Developer",
+      "date": "March 2017 - May 2017",
+      "description": "Web application development internship in Java, developing under Alfresco.",
+      "bullet": {
+        "1": "Various development for content management in Alfresco.",
+        "2": "High concurrency development"
+      }
     }
   },
   "contact": {
