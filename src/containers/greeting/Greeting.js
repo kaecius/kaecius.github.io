@@ -45,10 +45,10 @@ export default function Greeting() {
               </p>
               <SocialMedia />
               <div className="button-greeting-div">
-                <Button text="Contact me" href="#contact" />
+                <Button text={i18n.t("header.contact.me")} href="#contact" />
                 {greeting.resumeLink && (
                   <Button
-                    text="See my resume"
+                    text={i18n.t("header.download.cv")}
                     newTab={true}
                     href={greeting.resumeLink}
                   />
@@ -58,7 +58,7 @@ export default function Greeting() {
           </div>
           <div className="greeting-image-div">
             <img
-              alt="man sitting on table"
+              alt="portrait"
               src={require("../../assets/images/profile.jpg")}
             ></img>
           </div>

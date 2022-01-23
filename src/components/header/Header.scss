@@ -40,14 +40,20 @@
   color: $subTitle;
 }
 
-.header li a,
-.header li#lang  {
+.header li a  {
   display: block;
   padding: 15px 20px;
   color: $textColor;
   text-decoration: none;
 }
 
+.header li#lang{
+  display: block;
+  color: $textColor;
+  padding:4px 0px;
+  text-decoration: none;
+  font-size: 0.8em;
+}
 
 .header li a:hover,
 .header .menu-btn:hover,
@@ -160,6 +166,33 @@
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
 .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
   top: 0;
+}
+
+li#lang > select {
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  color: $textColor;
+  font-size: 1.2em;
+  padding: 10px;
+  width: 100%;
+  outline: 0px;
+}
+
+li#lang > select option {
+  background-color: $lightBackground1;
+  color: $textColor;
+  border: none;
+}
+
+.dark-menu li#lang > select {
+  background-color: transparent !important;
+  color: $textColorDark !important;
+}
+
+.dark-menu li#lang > select option {
+  background-color: $darkBackground !important;
+  color: $textColorDark !important;
 }
 
 /* 48em = 768px */

@@ -3,9 +3,10 @@ import Headroom from "react-headroom";
 import "./Header.scss";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import StyleContext from "../../contexts/StyleContext";
-import {useTranslation} from "react-i18next";
+import {useTranslation, Trans} from "react-i18next";
 import {
   greeting,
+  educationInfo,
   workExperiences,
   skillsSection,
   openSource,
@@ -24,6 +25,7 @@ function Header() {
   const viewExperience = workExperiences.display;
   const viewOpenSource = openSource.display;
   const viewSkills = skillsSection.display;
+  const viewEducation = educationInfo.display;
   const viewAchievement = achievementSection.display;
   const viewBlog = blogSection.display;
   const viewTalks = talkSection.display;
@@ -48,36 +50,57 @@ function Header() {
         <ul className={isDark ? "dark-menu menu" : "menu"}>
           {viewSkills && (
             <li>
-              <a href="#skills">Skills</a>
+              <a href="#skills">
+                <Trans i18nKey="header.skills"></Trans>
+              </a>
+            </li>
+          )}
+          {viewEducation && (
+            <li>
+              <a href="#education">
+                <Trans i18nKey="header.education"></Trans>
+              </a>
             </li>
           )}
           {viewExperience && (
             <li>
-              <a href="#experience">Work Experiences</a>
+              <a href="#experience">
+                <Trans i18nKey="header.work.experience"></Trans>
+              </a>
             </li>
           )}
           {viewOpenSource && (
             <li>
-              <a href="#opensource">Open Source</a>
+              <a href="#opensource">
+                <Trans i18nKey="header.open.source"></Trans>
+              </a>
             </li>
           )}
           {viewAchievement && (
             <li>
-              <a href="#achievements">Achievements</a>
+              <a href="#achievements">
+                <Trans i18nKey="header.achievements"></Trans>
+              </a>
             </li>
           )}
           {viewBlog && (
             <li>
-              <a href="#blogs">Blogs</a>
+              <a href="#blogs">
+                <Trans i18nKey="header.blogs"></Trans>
+              </a>
             </li>
           )}
           {viewTalks && (
             <li>
-              <a href="#talks">Talks</a>
+              <a href="#talks">
+                <Trans i18nKey="header.talks"></Trans>
+              </a>
             </li>
           )}
           <li>
-            <a href="#contact">Contact Me</a>
+            <a href="#contact">
+              <Trans i18nKey="header.contact.me"></Trans>
+            </a>
           </li>
           <li id="lang">
             <select

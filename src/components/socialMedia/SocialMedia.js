@@ -8,18 +8,6 @@ export default function socialMedia() {
   }
   return (
     <div className="social-media-div">
-      {socialMediaLinks.github ? (
-        <a
-          href={socialMediaLinks.github}
-          className="icon-button github"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <i className="fab fa-github"></i>
-          <span></span>
-        </a>
-      ) : null}
-
       {socialMediaLinks.linkedin ? (
         <a
           href={socialMediaLinks.linkedin}
@@ -28,6 +16,18 @@ export default function socialMedia() {
           rel="noopener noreferrer"
         >
           <i className="fab fa-linkedin-in"></i>
+          <span></span>
+        </a>
+      ) : null}
+
+      {socialMediaLinks.github ? (
+        <a
+          href={socialMediaLinks.github}
+          className="icon-button github"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i className="fab fa-github"></i>
           <span></span>
         </a>
       ) : null}
