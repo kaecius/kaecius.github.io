@@ -1,13 +1,12 @@
 @import "../../_globalColor";
 
-.main-button {
+.main-button, .contact-button {
   background-color: $buttonColor;
   border: solid 1px $buttonColor;
   color: $textColorDark;
   font-weight: 700;
   width: max-content;
   padding: 13px 22px;
-  margin-right: 50px;
   text-transform: uppercase;
   border-radius: 6px;
   text-align: center;
@@ -18,6 +17,11 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out 0s;
 }
+
+.main-button {
+  margin-right: 50px;
+}
+
 .main-button:hover {
   background-color: $darkBoxShadow2;
   color: $buttonColor;

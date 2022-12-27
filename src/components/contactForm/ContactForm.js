@@ -33,7 +33,7 @@ export default function ContactForm() {
       </label>
       <textarea id="message" name="message" />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <button className="main-button" type="submit" disabled={state.submitting}>
+      <button className="contact-button" type="submit" disabled={state.submitting}>
       <Trans i18nKey="contact.submit"></Trans>
       </button>
     </form>
