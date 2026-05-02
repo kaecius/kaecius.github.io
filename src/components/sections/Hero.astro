@@ -1,0 +1,120 @@
+---
+import { getPortfolioData } from '../../portfolio';
+import { t } from '../../i18n';
+
+const en = getPortfolioData('en');
+const es = getPortfolioData('es');
+---
+
+<section id="hero" class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title mono">Daniel Cañadillas</h1>
+    
+    <p class="hero-tagline" data-i18n="hero.tagline">{t('hero.tagline', 'en')}</p>
+    <p class="hero-subtagline" data-i18n="hero.subtagline">{t('hero.subtagline', 'en')}</p>
+    
+    <div class="hero-nav mono">
+      {['about', 'experience', 'skills', 'education', 'projects', 'contact'].map((section) => (
+        <a href={`#${section}`} class="hero-link invert-hover" data-i18n={`nav.${section}`}>
+          [{t(`nav.${section}`, 'en')}]
+        </a>
+      ))}
+    </div>
+    
+    <div class="hero-social lang-en">
+      {en.socialLinks.map((link) => (
+        <a 
+          href={link.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="social-link mono invert-hover"
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
+    <div class="hero-social lang-es">
+      {es.socialLinks.map((link) => (
+        <a 
+          href={link.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="social-link mono invert-hover"
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+  }
+
+  .hero-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-link {
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+
+  .hero-social {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+  }
+
+  .social-link {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    .hero-nav {
+      gap: var(--space-xs);
+    }
+
+    .hero-link {
+      font-size: 0.75rem;
+    }
+
+    .hero-social {
+      gap: var(--space-sm);
+    }
+
+    .social-link {
+      font-size: 0.75rem;
+    }
+  }
+</style>

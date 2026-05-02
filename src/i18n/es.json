@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "education": "Educación",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "tagline": "Planifica, Construye, Valida",
+    "subtagline": "Habilitando equipos a través de arquitectura, I+D y sistemas agenticos.",
+    "socialLinks": "Enlaces"
+  },
+  "about": {
+    "title": "Sobre mí"
+  },
+  "exploring": {
+    "title": "Explorando Actualmente"
+  },
+  "experience": {
+    "title": "Experiencia Laboral"
+  },
+  "education": {
+    "title": "Educación"
+  },
+  "skills": {
+    "title": "Habilidades"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "source": "Código",
+    "demo": "Demo",
+    "techStack": "Tecnologías"
+  },
+  "contact": {
+    "title": "Contacto",
+    "email": "Correo",
+    "linkedin": "LinkedIn",
+    "cta": "Construyamos algo juntos."
+  },
+  "footer": {
+    "copyright": "© {year} Daniel Cañadillas. Todos los derechos reservados."
+  },
+  "language": {
+    "en": "EN",
+    "es": "ES",
+    "switch": "Cambiar idioma"
+  }
+}

@@ -1,0 +1,290 @@
+/* Global Styles & CSS Variables */
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/geist-mono-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/geist-mono-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/geist-mono-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/geist-sans-latin-400-normal.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/geist-sans-latin-500-normal.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Sans';
+  src: url('/fonts/geist-sans-latin-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Dark Theme (default) */
+:root {
+  --color-bg: #0d0d0f;
+  --color-bg-elevated: #131316;
+  --color-bg-subtle: #1a1a1e;
+  --color-text: #e8e8ec;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+  --color-accent: #4ec9b0;
+  --color-border: #27272a;
+  --color-border-subtle: #1f1f23;
+  --color-dot-grid: rgba(255, 255, 255, 0.03);
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --color-bg: #f5f5f7;
+  --color-bg-elevated: #ffffff;
+  --color-bg-subtle: #e8e8ec;
+  --color-text: #1a1a1e;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #9ca3af;
+  --color-accent: #0891b2;
+  --color-border: #e5e5e8;
+  --color-border-subtle: #e8e8ec;
+  --color-dot-grid: rgba(0, 0, 0, 0.04);
+}
+
+/* Typography */
+:root {
+  --font-mono: 'Geist Mono', 'Fira Code', 'SF Mono', monospace;
+  --font-sans: 'Geist Sans', 'Inter', system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Layout */
+  --max-width: 900px;
+  --header-height: 3.5rem;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-base: 0.2s ease-in-out;
+  --transition-theme: 0.3s ease-in-out;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-theme), color var(--transition-theme);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(78, 201, 176, 0.04) 0%, transparent 60%),
+    radial-gradient(circle at 1px 1px, var(--color-dot-grid) 1px, transparent 0);
+  background-size: 100% 100%, 32px 32px;
+  transition: background-color var(--transition-theme), background-image var(--transition-theme);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Links */
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Inverted hover effect for interactive elements */
+.invert-hover {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  transition: all var(--transition-fast);
+}
+
+.invert-hover:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text);
+  transition: color var(--transition-theme);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--space-lg);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  margin-bottom: var(--space-sm);
+}
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-theme);
+}
+
+/* Mono text */
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Section styling */
+section {
+  padding: var(--space-3xl) var(--space-md);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+section + section {
+  border-top: 1px solid var(--color-border-subtle);
+  transition: border-color var(--transition-theme);
+}
+
+/* Lists */
+ul, ol {
+  list-style: none;
+}
+
+/* Utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Theme Toggle Icons */
+.theme-icon {
+  position: absolute;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+/* Light theme (default): show moon to switch to dark */
+.sun {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark theme: show sun to switch to light */
+[data-theme="dark"] .sun {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-theme="dark"] .moon {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 3rem;
+  }
+
+  section {
+    padding: var(--space-2xl) var(--space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 15px;
+  }
+
+  section {
+    padding: var(--space-xl) var(--space-sm);
+  }
+}

@@ -1,0 +1,66 @@
+---
+import { getPortfolioData } from '../../portfolio';
+import { t } from '../../i18n';
+
+const en = getPortfolioData('en');
+const es = getPortfolioData('es');
+---
+
+<section id="about" class="about">
+  <h2 class="section-title mono" data-i18n="about.title">{t('about.title', 'en')}</h2>
+  
+  <p class="about-text lang-en">{en.about.bio}</p>
+  <p class="about-text lang-es">{es.about.bio}</p>
+  
+  {en.about.quote && (
+    <blockquote class="about-quote lang-en">
+      <em>"{en.about.quote}"</em>
+    </blockquote>
+  )}
+  {es.about.quote && (
+    <blockquote class="about-quote lang-es">
+      <em>"{es.about.quote}"</em>
+    </blockquote>
+  )}
+</section>
+
+<style>
+  .about {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text);
+  }
+
+  .about-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    max-width: 700px;
+  }
+
+  .about-quote {
+    margin-top: var(--space-xl);
+    padding-left: var(--space-lg);
+    border-left: 3px solid var(--color-accent);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    max-width: 700px;
+    font-style: italic;
+  }
+
+  .about-quote em {
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: var(--space-2xl) var(--space-md);
+    }
+  }
+</style>

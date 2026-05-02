@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kaecius.github.io/sitemap-index.xml

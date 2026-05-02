@@ -1,0 +1,108 @@
+---
+import { getPortfolioData } from '../../portfolio';
+import { t } from '../../i18n';
+
+const en = getPortfolioData('en');
+const es = getPortfolioData('es');
+---
+
+<section id="skills" class="skills">
+  <h2 class="section-title mono" data-i18n="skills.title">{t('skills.title', 'en')}</h2>
+  
+  <div class="lang-en">
+    <div class="skills-grid">
+      {en.skills.map((category) => (
+        <div class="skills-category">
+          <h3 class="category-title mono">{category.category}</h3>
+          <div class="skills-list">
+            {category.skills.map((skill) => (
+              <span class="skill-tag mono">{skill.name}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <div class="lang-es">
+    <div class="skills-grid">
+      {es.skills.map((category) => (
+        <div class="skills-category">
+          <h3 class="category-title mono">{category.category}</h3>
+          <div class="skills-list">
+            {category.skills.map((skill) => (
+              <span class="skill-tag mono">{skill.name}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .skills {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2xl);
+    color: var(--color-text);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .skills-category {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--space-lg);
+  }
+
+  .category-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .skill-tag {
+    font-size: 0.8rem;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+  }
+
+  .skill-tag:hover {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .skills {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

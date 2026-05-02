@@ -1,0 +1,134 @@
+---
+import { getPortfolioData } from '../../portfolio';
+import { t } from '../../i18n';
+import Terminal from '../ui/Terminal.astro';
+
+const en = getPortfolioData('en');
+const es = getPortfolioData('es');
+---
+
+<section id="projects" class="projects">
+  <h2 class="section-title mono" data-i18n="projects.title">{t('projects.title', 'en')}</h2>
+  
+  <div class="lang-en">
+    <div class="projects-list">
+      {en.projects.map((project) => (
+        <div class="project-item">
+          <Terminal title={project.title.toLowerCase().replace(/\s+/g, '-')} lines={[
+            `cat README.md`,
+            ``,
+            `${project.description}`,
+            ``,
+            `Tech: ${project.techStack.join(', ')}`,
+          ]} />
+          
+          <div class="project-links">
+            {project.sourceUrl && (
+              <a 
+                href={project.sourceUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="project-link mono invert-hover"
+                data-i18n="projects.source"
+              >
+                {t('projects.source', 'en')}
+              </a>
+            )}
+            {project.demoUrl && (
+              <a 
+                href={project.demoUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="project-link mono invert-hover"
+                data-i18n="projects.demo"
+              >
+                {t('projects.demo', 'en')}
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <div class="lang-es">
+    <div class="projects-list">
+      {es.projects.map((project) => (
+        <div class="project-item">
+          <Terminal title={project.title.toLowerCase().replace(/\s+/g, '-')} lines={[
+            `cat README.md`,
+            ``,
+            `${project.description}`,
+            ``,
+            `Tech: ${project.techStack.join(', ')}`,
+          ]} />
+          
+          <div class="project-links">
+            {project.sourceUrl && (
+              <a 
+                href={project.sourceUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="project-link mono invert-hover"
+                data-i18n="projects.source"
+              >
+                {t('projects.source', 'es')}
+              </a>
+            )}
+            {project.demoUrl && (
+              <a 
+                href={project.demoUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="project-link mono invert-hover"
+                data-i18n="projects.demo"
+              >
+                {t('projects.demo', 'es')}
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2xl);
+    color: var(--color-text);
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+
+  .project-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .project-links {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .project-link {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .projects {
+      padding: var(--space-2xl) var(--space-md);
+    }
+  }
+</style>

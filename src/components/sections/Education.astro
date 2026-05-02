@@ -1,0 +1,134 @@
+---
+import { getPortfolioData } from '../../portfolio';
+import { t } from '../../i18n';
+
+const en = getPortfolioData('en');
+const es = getPortfolioData('es');
+---
+
+<section id="education" class="education">
+  <h2 class="section-title mono" data-i18n="education.title">{t('education.title', 'en')}</h2>
+  
+  <div class="lang-en">
+    <div class="education-list">
+      {en.education.map((edu) => (
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-main">
+              <h3 class="education-degree">{edu.degree}</h3>
+              <span class="education-school mono">@{edu.schoolName}</span>
+            </div>
+            <span class="education-date mono">{edu.duration}</span>
+          </div>
+          
+          {edu.description && (
+            <p class="education-desc">{edu.description}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <div class="lang-es">
+    <div class="education-list">
+      {es.education.map((edu) => (
+        <div class="education-item">
+          <div class="education-header">
+            <div class="education-main">
+              <h3 class="education-degree">{edu.degree}</h3>
+              <span class="education-school mono">@{edu.schoolName}</span>
+            </div>
+            <span class="education-date mono">{edu.duration}</span>
+          </div>
+          
+          {edu.description && (
+            <p class="education-desc">{edu.description}</p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .education {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2xl);
+    color: var(--color-text);
+  }
+
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .education-item {
+    border-left: 2px solid var(--color-border);
+    padding-left: var(--space-lg);
+    position: relative;
+  }
+
+  .education-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .education-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .education-degree {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .education-school {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+  }
+
+  .education-date {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+
+  .education-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 768px) {
+    .education {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .education-header {
+      flex-direction: column;
+    }
+  }
+</style>

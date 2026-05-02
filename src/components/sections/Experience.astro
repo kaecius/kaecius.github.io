@@ -1,0 +1,196 @@
+---
+import { getPortfolioData } from '../../portfolio';
+import { t } from '../../i18n';
+
+const en = getPortfolioData('en');
+const es = getPortfolioData('es');
+---
+
+<section id="experience" class="experience">
+  <h2 class="section-title mono" data-i18n="experience.title">{t('experience.title', 'en')}</h2>
+  
+  <div class="lang-en">
+    <div class="experience-list">
+      {en.experience.map((job) => (
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-main">
+              <h3 class="experience-role">{job.role}</h3>
+              {job.companyUrl ? (
+                <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" class="experience-company mono">@{job.company}</a>
+              ) : (
+                <span class="experience-company mono">@{job.company}</span>
+              )}
+            </div>
+            <span class="experience-date mono">{job.date}</span>
+          </div>
+          
+          {job.location && (
+            <span class="experience-location mono">{job.location}</span>
+          )}
+          
+          <p class="experience-desc">{job.description}</p>
+          
+          {job.bullets.length > 0 && (
+            <ul class="experience-bullets">
+              {job.bullets.map((bullet) => (
+                <li class="bullet-item" set:html={bullet} />
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <div class="lang-es">
+    <div class="experience-list">
+      {es.experience.map((job) => (
+        <div class="experience-item">
+          <div class="experience-header">
+            <div class="experience-main">
+              <h3 class="experience-role">{job.role}</h3>
+              {job.companyUrl ? (
+                <a href={job.companyUrl} target="_blank" rel="noopener noreferrer" class="experience-company mono">@{job.company}</a>
+              ) : (
+                <span class="experience-company mono">@{job.company}</span>
+              )}
+            </div>
+            <span class="experience-date mono">{job.date}</span>
+          </div>
+          
+          {job.location && (
+            <span class="experience-location mono">{job.location}</span>
+          )}
+          
+          <p class="experience-desc">{job.description}</p>
+          
+          {job.bullets.length > 0 && (
+            <ul class="experience-bullets">
+              {job.bullets.map((bullet) => (
+                <li class="bullet-item" set:html={bullet} />
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .experience {
+    padding: var(--space-3xl) var(--space-md);
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2xl);
+    color: var(--color-text);
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+
+  .experience-item {
+    border-left: 2px solid var(--color-border);
+    padding-left: var(--space-lg);
+    position: relative;
+  }
+
+  .experience-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+  }
+
+  .experience-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .experience-role {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .experience-company {
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .experience-company:hover {
+    text-decoration: underline;
+  }
+
+  .experience-date {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+
+  .experience-location {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+    display: block;
+  }
+
+  .experience-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .experience-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .bullet-item {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    padding-left: var(--space-md);
+    position: relative;
+  }
+
+  .bullet-item::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+  }
+
+  @media (max-width: 768px) {
+    .experience {
+      padding: var(--space-2xl) var(--space-md);
+    }
+
+    .experience-header {
+      flex-direction: column;
+    }
+  }
+</style>

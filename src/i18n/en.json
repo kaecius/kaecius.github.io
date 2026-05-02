@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Plan, Build, Validate",
+    "subtagline": "Enabling teams through architecture, R&D, and agentic systems.",
+    "socialLinks": "Links"
+  },
+  "about": {
+    "title": "About"
+  },
+  "exploring": {
+    "title": "Currently Exploring"
+  },
+  "experience": {
+    "title": "Work Experience"
+  },
+  "education": {
+    "title": "Education"
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "source": "Source",
+    "demo": "Demo",
+    "techStack": "Tech Stack"
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "Email",
+    "linkedin": "LinkedIn",
+    "cta": "Let's build something together."
+  },
+  "footer": {
+    "copyright": "© {year} Daniel Cañadillas. All rights reserved."
+  },
+  "language": {
+    "en": "EN",
+    "es": "ES",
+    "switch": "Switch language"
+  }
+}

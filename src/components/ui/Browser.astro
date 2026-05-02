@@ -1,0 +1,72 @@
+---
+export interface Props {
+  url?: string;
+}
+
+const { url = "localhost:3000" } = Astro.props;
+---
+
+<div class="browser">
+  <div class="browser-header">
+    <div class="browser-dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <div class="browser-address">
+      <span class="address-text mono">{url}</span>
+    </div>
+  </div>
+  <div class="browser-body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .browser {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .browser-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg-subtle);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .browser-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .browser-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--color-text-muted);
+  }
+
+  .browser-address {
+    flex: 1;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--space-xs) var(--space-sm);
+    text-align: center;
+  }
+
+  .address-text {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+  }
+
+  .browser-body {
+    padding: var(--space-md);
+    min-height: 200px;
+  }
+</style>
