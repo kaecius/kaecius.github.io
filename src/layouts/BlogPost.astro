@@ -1,0 +1,125 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/layout/Nav.astro';
+import Footer from '../components/layout/Footer.astro';
+import '../styles/blog.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  coverImage?: string;
+  readingTime: number;
+}
+
+const { title, description, date, tags, readingTime } = Astro.props;
+
+const formattedDate = date.toISOString().split('T')[0];
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+
+  <article class="blog-post">
+    <div class="blog-post-header">
+      <a href="/blog" class="blog-back mono invert-hover">← back</a>
+
+      <h1 class="blog-post-title">{title}</h1>
+
+      <div class="blog-post-meta">
+        <time datetime={date.toISOString()} class="blog-post-date mono">
+          // {formattedDate}
+        </time>
+        <span class="blog-post-reading-time mono">
+          {readingTime} min read
+        </span>
+      </div>
+
+      {tags.length > 0 && (
+        <div class="blog-post-tags">
+          {tags.map((tag) => (
+            <span class="blog-tag mono">{tag}</span>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <div class="blog-post-content">
+      <slot />
+    </div>
+  </article>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-post-header {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .blog-back {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  .blog-post-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+  }
+
+  .blog-post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .blog-post-date {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .blog-post-reading-time {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+
+  .blog-post-reading-time::before {
+    content: "·";
+    margin-right: var(--space-md);
+  }
+
+  .blog-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .blog-tag {
+    font-size: 0.75rem;
+    padding: 0.2em 0.6em;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 480px) {
+    .blog-post-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+
+    .blog-post-reading-time::before {
+      display: none;
+    }
+  }
+</style>

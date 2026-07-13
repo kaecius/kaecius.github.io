@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/layout/Nav.astro';
+import Footer from '../../components/layout/Footer.astro';
+import { getCollection } from 'astro:content';
+import '../../styles/blog.css';
+
+const allPosts = await getCollection('blog');
+const publishedPosts = allPosts
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<Layout title="Blog" description="Thoughts on software engineering, architecture, R&D, and agentic systems.">
+  <Nav />
+
+  <div class="blog-list">
+    <header class="blog-list-header">
+      <h1 class="blog-list-title">
+        <span class="blog-list-prefix">~/</span>blog
+      </h1>
+      <p class="blog-list-count">
+        {publishedPosts.length} {publishedPosts.length === 1 ? 'post' : 'posts'}
+      </p>
+    </header>
+
+    <div class="blog-list-items">
+      {publishedPosts.map((post) => {
+        const date = new Date(post.data.date);
+        const formattedDate = date.toISOString().split('T')[0];
+        return (
+          <div class="blog-list-item">
+            <time datetime={date.toISOString()} class="blog-list-date">
+              {formattedDate}
+            </time>
+            <div class="blog-list-main">
+              <a href={`/blog/${post.id}`} class="blog-list-link">
+                {post.data.title}
+              </a>
+              <p class="blog-list-description">{post.data.description}</p>
+              {post.data.tags.length > 0 && (
+                <div class="blog-list-tags">
+                  {post.data.tags.map((tag) => (
+                    <span class="blog-tag mono">{tag}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .blog-tag {
+    font-size: 0.75rem;
+    padding: 0.2em 0.6em;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    color: var(--color-text-secondary);
+  }
+</style>

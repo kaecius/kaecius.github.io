@@ -1,0 +1,44 @@
+---
+import BlogPost from '../../layouts/BlogPost.astro';
+import { getCollection, render } from 'astro:content';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+
+  return blogEntries.map((entry) => {
+    const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${entry.id}.md`);
+    const fallbackPath = path.join(process.cwd(), 'src', 'content', 'blog', `${entry.id}.mdx`);
+    
+    let readingTime = 1;
+    const fileToRead = fs.existsSync(filePath) ? filePath : fallbackPath;
+    
+    if (fs.existsSync(fileToRead)) {
+      const rawContent = fs.readFileSync(fileToRead, 'utf-8');
+      const contentWithoutFrontmatter = rawContent.replace(/^---[\s\S]*?---/, '').trim();
+      const wordCount = contentWithoutFrontmatter.split(/\s+/).filter(Boolean).length;
+      readingTime = Math.max(1, Math.ceil(wordCount / 200));
+    }
+
+    return {
+      params: { slug: entry.id },
+      props: { entry, readingTime },
+    };
+  });
+}
+
+const { entry, readingTime } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<BlogPost
+  title={entry.data.title}
+  description={entry.data.description}
+  date={new Date(entry.data.date)}
+  tags={entry.data.tags}
+  coverImage={entry.data.coverImage}
+  readingTime={readingTime}
+>
+  <Content />
+</BlogPost>

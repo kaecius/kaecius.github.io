@@ -1,0 +1,138 @@
+/* MDX Cheatsheet Styles */
+
+.callout {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 6px;
+  margin: var(--space-lg) 0;
+  border-left: 3px solid;
+  background: var(--color-bg-elevated);
+}
+
+.callout strong {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.callout p {
+  margin-bottom: 0;
+}
+
+.callout-info {
+  border-left-color: var(--color-accent);
+}
+
+.callout-info strong {
+  color: var(--color-accent);
+}
+
+.callout-warning {
+  border-left-color: #eab308;
+}
+
+.callout-warning strong {
+  color: #eab308;
+}
+
+.callout-danger {
+  border-left-color: #ef4444;
+}
+
+.callout-danger strong {
+  color: #ef4444;
+}
+
+.callout-tip {
+  border-left-color: #22c55e;
+}
+
+.callout-tip strong {
+  color: #22c55e;
+}
+
+.custom-container {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: 6px;
+  margin: var(--space-lg) 0;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+}
+
+.custom-container p:last-child {
+  margin-bottom: 0;
+}
+
+.container-code {
+  border-left: 3px solid var(--color-accent);
+}
+
+.container-changelog {
+  border-left: 3px solid #8b5cf6;
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: var(--space-lg) 0;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+}
+
+.embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.cheatsheet kbd {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  color: var(--color-text);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+.cheatsheet mark {
+  background: rgba(78, 201, 176, 0.2);
+  color: var(--color-text);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}
+
+[data-theme="light"] .cheatsheet mark {
+  background: rgba(8, 145, 178, 0.15);
+}
+
+.cheatsheet abbr[title] {
+  text-decoration: underline dotted var(--color-accent);
+  cursor: help;
+}
+
+.cheatsheet dl {
+  margin: var(--space-md) 0;
+}
+
+.cheatsheet dt {
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: var(--space-md);
+}
+
+.cheatsheet dd {
+  color: var(--color-text-secondary);
+  padding-left: var(--space-lg);
+  margin-bottom: var(--space-sm);
+}
