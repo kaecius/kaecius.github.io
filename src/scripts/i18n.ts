@@ -77,13 +77,20 @@ function initI18n() {
     return DEFAULT_LANG;
   }
   
-  function setLang(lang: string) {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(STORAGE_KEY, lang);
-    }
-    updatePageLanguage(lang);
-    document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
+function setLang(lang: string) {
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(STORAGE_KEY, lang);
   }
+  
+  const blogLangLink = document.querySelector('[data-blog-lang]') as HTMLAnchorElement | null;
+  if (blogLangLink && blogLangLink.getAttribute('data-blog-lang') === lang) {
+    window.location.href = blogLangLink.href;
+    return;
+  }
+  
+  updatePageLanguage(lang);
+  document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
+}
   
   // Initialize
   const initialLang = getStoredLang();

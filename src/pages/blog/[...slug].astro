@@ -9,6 +9,7 @@ export async function getStaticPaths() {
 
   return blogEntries.map((entry) => {
     const lang = entry.data.lang || 'en';
+    const fileName = entry.id.split('/').pop()?.replace(/\.(md|mdx)$/, '') || '';
     const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${entry.id}.md`);
     const fallbackPath = path.join(process.cwd(), 'src', 'content', 'blog', `${entry.id}.mdx`);
     
@@ -22,14 +23,20 @@ export async function getStaticPaths() {
       readingTime = Math.max(1, Math.ceil(wordCount / 200));
     }
 
+    const alternateLang = lang === 'en' ? 'es' : 'en';
+    const alternateEntry = blogEntries.find((e) => {
+      const eFileName = e.id.split('/').pop()?.replace(/\.(md|mdx)$/, '') || '';
+      return e.data.lang === alternateLang && eFileName === fileName;
+    });
+
     return {
       params: { slug: entry.id },
-      props: { entry, readingTime, lang },
+      props: { entry, readingTime, lang, alternateEntry },
     };
   });
 }
 
-const { entry, readingTime, lang } = Astro.props;
+const { entry, readingTime, lang, alternateEntry } = Astro.props;
 const { Content } = await render(entry);
 ---
 
@@ -41,6 +48,7 @@ const { Content } = await render(entry);
   coverImage={entry.data.coverImage}
   readingTime={readingTime}
   lang={lang}
+  alternateUrl={alternateEntry ? `/blog/${alternateEntry.id}` : undefined}
 >
   <Content />
 </BlogPost>
