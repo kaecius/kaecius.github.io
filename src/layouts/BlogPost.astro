@@ -2,6 +2,7 @@
 import Layout from './Layout.astro';
 import Nav from '../components/layout/Nav.astro';
 import Footer from '../components/layout/Footer.astro';
+import { t } from '../i18n';
 import '../styles/blog.css';
 
 export interface Props {
@@ -11,19 +12,20 @@ export interface Props {
   tags: string[];
   coverImage?: string;
   readingTime: number;
+  lang?: string;
 }
 
-const { title, description, date, tags, readingTime } = Astro.props;
+const { title, description, date, tags, readingTime, lang = 'en' } = Astro.props;
 
 const formattedDate = date.toISOString().split('T')[0];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} lang={lang}>
   <Nav />
 
   <article class="blog-post">
     <div class="blog-post-header">
-      <a href="/blog" class="blog-back mono invert-hover">← back</a>
+      <a href="/blog" class="blog-back mono invert-hover" data-i18n="blog.back">← {t('blog.back', lang)}</a>
 
       <h1 class="blog-post-title">{title}</h1>
 
@@ -32,7 +34,7 @@ const formattedDate = date.toISOString().split('T')[0];
           // {formattedDate}
         </time>
         <span class="blog-post-reading-time mono">
-          {readingTime} min read
+          {readingTime} {t('blog.minRead', lang)}
         </span>
       </div>
 

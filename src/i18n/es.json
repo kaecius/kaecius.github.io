@@ -34,6 +34,13 @@
     "demo": "Demo",
     "techStack": "Tecnologías"
   },
+  "blog": {
+    "title": "Blog",
+    "back": "volver",
+    "minRead": "min lectura",
+    "posts": "posts",
+    "post": "post"
+  },
   "contact": {
     "title": "Contacto",
     "email": "Correo",

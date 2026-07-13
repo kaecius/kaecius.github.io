@@ -34,6 +34,13 @@
     "demo": "Demo",
     "techStack": "Tech Stack"
   },
+  "blog": {
+    "title": "Blog",
+    "back": "back",
+    "minRead": "min read",
+    "posts": "posts",
+    "post": "post"
+  },
   "contact": {
     "title": "Contact",
     "email": "Email",

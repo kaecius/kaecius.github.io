@@ -1,0 +1,346 @@
+---
+title: "Cheatsheet de MDX"
+description: "Referencia completa de todas las capacidades de MDX: componentes, expresiones JSX, imports, frontmatter, layouts y patrones avanzados."
+date: 2026-07-13
+tags: ["mdx", "cheatsheet", "reference"]
+draft: true
+lang: es
+---
+
+import '../../../styles/mdx-cheatsheet.css';
+
+<div class="cheatsheet">
+
+Referencia completa de todo lo que puedes hacer con MDX en este blog. Úsala como guía al escribir nuevos posts.
+
+## 1. Markdown Estándar
+
+### Encabezados
+
+Usa `##` para secciones y `###` para subsecciones. Evita `#` — el título del post ya sirve como h1.
+
+```markdown
+## Encabezado de segundo nivel
+### Encabezado de tercer nivel
+#### Encabezado de cuarto nivel
+##### Encabezado de quinto nivel
+###### Encabezado de sexto nivel
+```
+
+#### Encabezado de cuarto nivel
+##### Encabezado de quinto nivel
+###### Encabezado de sexto nivel
+
+### Párrafos
+
+Los párrafos regulares son simplemente líneas de texto separadas por líneas en blanco. Puedes escribir contenido extenso aquí sin ninguna sintaxis especial.
+
+Este es un segundo párrafo. Cada bloque de texto separado por una línea en blanco se convierte en su propio elemento `<p>`.
+
+### Formato de Texto
+
+**Texto en negrita** usando doble asterisco.
+
+*Texto en cursiva* usando asterisco simple.
+
+***Texto en negrita y cursiva*** usando triple asterisco.
+
+~~Texto tachado~~ usando doble tilde.
+
+### Enlaces
+
+[Enlace inline](https://example.com) con texto descriptivo.
+
+[Enlace con título](https://example.com "Texto del título al hacer hover").
+
+### Imágenes
+
+![Texto alternativo](/images/blog/sample.jpg)
+
+### Listas
+
+#### Lista Desordenada
+- Primer elemento
+- Segundo elemento
+  - Elemento anidado
+  - Otro elemento anidado
+- Tercer elemento
+
+#### Lista Ordenada
+1. Primer paso
+2. Segundo paso
+   1. Sub-paso A
+   2. Sub-paso B
+3. Tercer paso
+
+### Blockquotes
+
+> Este es un blockquote.
+> Puede abarcar múltiples líneas.
+
+> Blockquotes anidados:
+> > Nivel dos
+> > > Nivel tres
+
+### Reglas Horizontales
+
+---
+
+## 2. Código
+
+### Código Inline
+
+Usa backticks para `código inline` como `const x = 1` o `npm install`.
+
+### Bloques de Código
+
+```javascript
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+```python
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+```
+
+```bash
+npm install astro@latest
+```
+
+```hcl
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+}
+```
+
+```sql
+SELECT * FROM users WHERE active = true;
+```
+
+```json
+{
+  "name": "astro-blog",
+  "version": "1.0.0"
+}
+```
+
+```yaml
+title: My Post
+date: 2026-07-13
+tags: [blog, mdx]
+```
+
+## 3. Tablas
+
+### Tabla Básica
+
+| Columna 1 | Columna 2 | Columna 3 |
+|-----------|-----------|-----------|
+| Dato A    | Dato B    | Dato C    |
+| Dato D    | Dato E    | Dato F    |
+
+### Tabla con Alineación
+
+| Izquierda | Centro | Derecha |
+|:----------|:------:|--------:|
+| Texto     | Texto  | Texto   |
+| Izq       | Centro | Der     |
+
+### Tabla Compleja
+
+| Característica | Markdown | MDX | HTML |
+|----------------|----------|-----|------|
+| Componentes    | ❌       | ✅  | ❌   |
+| Expresiones    | ❌       | ✅  | ❌   |
+| Encabezados    | ✅       | ✅  | ✅   |
+| Tablas         | ✅       | ✅  | ✅   |
+
+## 4. HTML en MDX
+
+Puedes usar HTML directamente en archivos MDX:
+
+<details>
+<summary>Haz clic para expandir</summary>
+
+Este contenido está oculto por defecto.
+
+- Item 1
+- Item 2
+- Item 3
+
+</details>
+
+Presiona <kbd>Ctrl</kbd> + <kbd>C</kbd> para copiar.
+
+Esto es <mark>texto resaltado</mark>.
+
+H<sub>2</sub>O es agua. E = mc<sup>2</sup>.
+
+<abbr title="HyperText Markup Language">HTML</abbr> es el lenguaje de la web.
+
+<dl>
+<dt>Término</dt>
+<dd>Definición del término.</dd>
+<dt>Otro Término</dt>
+<dd>Definición del otro término.</dd>
+</dl>
+
+## 5. Expresiones JSX
+
+### Expresiones Inline
+
+Resultado: {1 + 1}
+
+Texto: {"Hola" + " " + "Mundo"}
+
+### Renderizado Condicional
+
+{true ? "Esto es visible" : "Esto no es visible"}
+
+{false ? "No verás esto" : "Verás esto en su lugar"}
+
+### Literales de Template
+
+{`Suma: ${2 + 2} = ${2 + 2}` }
+
+## 6. Componentes
+
+### Importar Componentes
+
+```mdx
+import Callout from '../../components/blog/Callout.astro';
+import CodeGroup from '../../components/blog/CodeGroup.astro';
+
+<Callout type="info">
+  Este es un callout de información.
+</Callout>
+```
+
+### Callout Boxes Personalizados
+
+<div class="callout callout-info">
+<strong>Info:</strong> Este es un cuadro de callout de información.
+</div>
+
+<div class="callout callout-warning">
+<strong>Warning:</strong> Este es un cuadro de callout de advertencia.
+</div>
+
+<div class="callout callout-danger">
+<strong>Danger:</strong> Este es un cuadro de callout de peligro.
+</div>
+
+<div class="callout callout-tip">
+<strong>Tip:</strong> Este es un cuadro de callout de consejo.
+</div>
+
+## 7. Integración con Frontmatter
+
+### Acceder a Datos del Frontmatter
+
+En el frontmatter:
+```yaml
+---
+title: "Mi Post"
+date: 2026-07-13
+author: "Daniel"
+---
+```
+
+En el cuerpo MDX (en layouts Astro):
+```mdx
+Título: {Astro.props.frontmatter.title}
+Fecha: {Astro.props.frontmatter.date}
+```
+
+### Formateo de Fechas
+
+```mdx
+{new Date(Astro.props.frontmatter.date).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+})}
+```
+
+## 8. Patrones Avanzados
+
+### JSX Anidado con Children
+
+<div class="custom-container">
+  <h3>Contenedor Personalizado</h3>
+  <p>Contenido dentro del contenedor.</p>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+  </ul>
+</div>
+
+### Spread Props
+
+```mdx
+const props = { className: "highlight", id: "special" };
+<div {...props}>Contenido con props spread</div>
+```
+
+### Fragments
+
+<>
+  <p>Primer párrafo.</p>
+  <p>Segundo párrafo.</p>
+</>
+
+### Comentarios MDX
+
+{/* Este comentario no aparecerá en el HTML renderizado */}
+
+## 9. Footnotes
+
+Los footnotes se soportan mediante el plugin remark-gfm[^1]. También puedes usar múltiples footnotes en el mismo documento[^2].
+
+[^1]: GitHub Flavored Markdown extiende Markdown estándar con características adicionales.
+[^2]: Los footnotes se renderizan al final del documento.
+
+## 10. Math/KaTeX
+
+Para soporte de matemáticas, necesitas instalar plugins adicionales:
+
+- `remark-math` — parsea sintaxis `$...$` y `$$...$$`
+- `rehype-katex` — renderiza matemáticas en HTML con KaTeX
+
+Ejemplo de uso:
+```mdx
+La ecuación de Einstein: $E = mc^2$
+
+Ecuación en bloque:
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+```
+
+## 11. Contenedores Personalizados
+
+Usa divs con clases para cajas estilizadas:
+
+<div class="info-box">
+**Nota:** Esta es una caja de información personalizada.
+</div>
+
+<div class="warning-box">
+**Advertencia:** Esta es una caja de advertencia personalizada.
+</div>
+
+## 12. Embeds y Media
+
+### YouTube Embed
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+
+### CodeSandbox Embed
+
+<iframe src="https://codesandbox.io/embed/new" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+</div>

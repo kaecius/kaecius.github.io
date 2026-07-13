@@ -8,6 +8,7 @@ export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
 
   return blogEntries.map((entry) => {
+    const lang = entry.data.lang || 'en';
     const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${entry.id}.md`);
     const fallbackPath = path.join(process.cwd(), 'src', 'content', 'blog', `${entry.id}.mdx`);
     
@@ -23,12 +24,12 @@ export async function getStaticPaths() {
 
     return {
       params: { slug: entry.id },
-      props: { entry, readingTime },
+      props: { entry, readingTime, lang },
     };
   });
 }
 
-const { entry, readingTime } = Astro.props;
+const { entry, readingTime, lang } = Astro.props;
 const { Content } = await render(entry);
 ---
 
@@ -39,6 +40,7 @@ const { Content } = await render(entry);
   tags={entry.data.tags}
   coverImage={entry.data.coverImage}
   readingTime={readingTime}
+  lang={lang}
 >
   <Content />
 </BlogPost>
