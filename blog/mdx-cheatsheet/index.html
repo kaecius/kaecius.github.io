@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Complete reference of all MDX capabilities: components, JSX expressions, imports, frontmatter, layouts, and advanced patterns."><meta name="theme-color" content="#f5f5f7"><script>
+      (function() {
+        const theme = localStorage.getItem('portfolio-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#0d0d0f' : '#f5f5f7');
+      })();
+    </script><!-- Open Graph --><meta property="og:title" content="MDX Cheatsheet"><meta property="og:description" content="Complete reference of all MDX capabilities: components, JSX expressions, imports, frontmatter, layouts, and advanced patterns."><meta property="og:type" content="website"><meta property="og:url" content="https://kaecius.github.io/blog/mdx-cheatsheet/"><meta property="og:image" content="https://kaecius.github.io/og-image.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="MDX Cheatsheet"><meta name="twitter:description" content="Complete reference of all MDX capabilities: components, JSX expressions, imports, frontmatter, layouts, and advanced patterns."><meta name="twitter:image" content="https://kaecius.github.io/og-image.png"><!-- JSON-LD --><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Daniel Cañadillas","url":"https://kaecius.github.io","sameAs":["https://github.com/kaecius","https://www.linkedin.com/in/daniel-canadillas/"],"jobTitle":"Staff Software Engineer & Researcher","worksFor":{"@type":"Organization","name":"Ideable"}}</script><link rel="canonical" href="https://kaecius.github.io/blog/mdx-cheatsheet/"><link rel="sitemap" href="/sitemap-index.xml"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>MDX Cheatsheet</title><link rel="stylesheet" href="/_astro/Footer.CZVuCcEV.css"><link rel="stylesheet" href="/_astro/_astro_content.DwzHYCB4.css"><style>.blog-post-header[data-astro-cid-tldeq5d5]{margin-bottom:var(--space-2xl);padding-bottom:var(--space-lg);border-bottom:1px solid var(--color-border-subtle)}.blog-back[data-astro-cid-tldeq5d5]{color:var(--color-text-muted);margin-bottom:var(--space-lg);font-size:.875rem;display:inline-block}.blog-post-title[data-astro-cid-tldeq5d5]{margin-bottom:var(--space-md);font-size:clamp(2rem,4vw,2.5rem);line-height:1.2}.blog-post-meta[data-astro-cid-tldeq5d5]{gap:var(--space-md);margin-bottom:var(--space-md);flex-wrap:wrap;align-items:center;display:flex}.blog-post-date[data-astro-cid-tldeq5d5]{color:var(--color-text-muted);font-size:.9rem}.blog-post-reading-time[data-astro-cid-tldeq5d5]{color:var(--color-text-muted);font-size:.85rem}.blog-post-reading-time[data-astro-cid-tldeq5d5]:before{content:"·";margin-right:var(--space-md)}.blog-post-tags[data-astro-cid-tldeq5d5]{gap:var(--space-xs);flex-wrap:wrap;display:flex}.blog-tag[data-astro-cid-tldeq5d5]{background:var(--color-bg-subtle);border:1px solid var(--color-border);color:var(--color-text-secondary);border-radius:3px;padding:.2em .6em;font-size:.75rem}@media (width<=480px){.blog-post-meta[data-astro-cid-tldeq5d5]{align-items:flex-start;gap:var(--space-xs);flex-direction:column}.blog-post-reading-time[data-astro-cid-tldeq5d5]:before{display:none}}
+</style><style>.callout{padding:var(--space-md) var(--space-lg);margin:var(--space-lg) 0;background:var(--color-bg-elevated);border-left:3px solid;border-radius:6px}.callout strong{margin-bottom:var(--space-xs);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.05em;font-size:.875rem;display:block}.callout p{margin-bottom:0}.callout-info{border-left-color:var(--color-accent)}.callout-info strong{color:var(--color-accent)}.callout-warning{border-left-color:#eab308}.callout-warning strong{color:#eab308}.callout-danger{border-left-color:#ef4444}.callout-danger strong{color:#ef4444}.callout-tip{border-left-color:#22c55e}.callout-tip strong{color:#22c55e}.custom-container{padding:var(--space-md) var(--space-lg);margin:var(--space-lg) 0;background:var(--color-bg-elevated);border:1px solid var(--color-border);border-radius:6px}.custom-container p:last-child{margin-bottom:0}.container-code{border-left:3px solid var(--color-accent)}.container-changelog{border-left:3px solid #8b5cf6}.embed-container{height:0;margin:var(--space-lg) 0;border:1px solid var(--color-border);border-radius:6px;padding-bottom:56.25%;position:relative;overflow:hidden}.embed-container iframe{border:none;border-radius:6px;width:100%;height:100%;margin:0;position:absolute;top:0;left:0}.cheatsheet kbd{font-family:var(--font-mono);background:var(--color-bg-subtle);border:1px solid var(--color-border);color:var(--color-text);box-shadow:0 1px 0 var(--color-border);border-radius:3px;padding:.1em .4em;font-size:.8em}.cheatsheet mark{color:var(--color-text);background:#4ec9b033;border-radius:2px;padding:.1em .3em}[data-theme=light] .cheatsheet mark{background:#0891b226}.cheatsheet abbr[title]{text-decoration:underline dotted var(--color-accent);cursor:help}.cheatsheet dl{margin:var(--space-md) 0}.cheatsheet dt{color:var(--color-text);margin-top:var(--space-md);font-weight:600}.cheatsheet dd{color:var(--color-text-secondary);padding-left:var(--space-lg);margin-bottom:var(--space-sm)}
+</style></head><body><nav class="nav" id="nav" data-astro-cid-vi6cectr><div class="nav-container" data-astro-cid-vi6cectr><a href="#" class="nav-brand mono invert-hover" data-astro-cid-vi6cectr>/dev/daniel</a><div class="nav-links" data-astro-cid-vi6cectr><a href="/#about" class="nav-link mono invert-hover" data-i18n="nav.about" data-astro-cid-vi6cectr>[object Object]</a><a href="/#experience" class="nav-link mono invert-hover" data-i18n="nav.experience" data-astro-cid-vi6cectr>[object Object]</a><a href="/blog" class="nav-link mono invert-hover" data-i18n="nav.blog" data-astro-cid-vi6cectr>blog</a><a href="/#skills" class="nav-link mono invert-hover" data-i18n="nav.skills" data-astro-cid-vi6cectr>[object Object]</a><a href="/#projects" class="nav-link mono invert-hover" data-i18n="nav.projects" data-astro-cid-vi6cectr>[object Object]</a><a href="/#contact" class="nav-link mono invert-hover" data-i18n="nav.contact" data-astro-cid-vi6cectr>[object Object]</a></div><div class="nav-actions" data-astro-cid-vi6cectr><div class="nav-lang" data-astro-cid-vi6cectr><button class="lang-btn mono invert-hover" data-lang="en" aria-label="English" data-astro-cid-vi6cectr>[EN]</button><button class="lang-btn mono invert-hover" data-lang="es" aria-label="Español" data-astro-cid-vi6cectr>[ES]</button></div><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" data-astro-cid-iomzzyrn><span class="theme-icon sun" data-astro-cid-iomzzyrn>☀</span><span class="theme-icon moon" data-astro-cid-iomzzyrn>☾</span></button><script type="module">(function(){let e=`portfolio-theme`,t=`light`;function n(){return typeof localStorage<`u`&&localStorage.getItem(e)||t}function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t),document.documentElement.setAttribute(`data-theme`,t);let n=document.querySelector(`meta[name="theme-color"]`);n&&n.setAttribute(`content`,t===`dark`?`#0d0d0f`:`#f5f5f7`)}function i(){r((document.documentElement.getAttribute(`data-theme`)||t)===`dark`?`light`:`dark`)}let a=n();document.documentElement.setAttribute(`data-theme`,a),document.addEventListener(`DOMContentLoaded`,()=>{document.getElementById(`theme-toggle`)?.addEventListener(`click`,i)}),window.themeToggle={setTheme:r,toggleTheme:i,getStoredTheme:n}})();</script></div><button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" data-astro-cid-vi6cectr><span data-astro-cid-vi6cectr></span><span data-astro-cid-vi6cectr></span><span data-astro-cid-vi6cectr></span></button></div></nav><script type="module">document.addEventListener(`DOMContentLoaded`,()=>{let e=document.querySelector(`.nav-toggle`),t=document.querySelector(`.nav-links`);e?.addEventListener(`click`,()=>{let n=e.getAttribute(`aria-expanded`)===`true`;e.setAttribute(`aria-expanded`,String(!n)),t?.classList.toggle(`active`)}),document.querySelectorAll(`.lang-btn`).forEach(e=>{e.addEventListener(`click`,()=>{let t=e.getAttribute(`data-lang`);t&&window.i18n&&window.i18n.setLang(t)})}),document.querySelectorAll(`.nav-link`).forEach(n=>{n.addEventListener(`click`,()=>{e?.setAttribute(`aria-expanded`,`false`),t?.classList.remove(`active`)})})});</script><article class="blog-post" data-astro-cid-tldeq5d5><div class="blog-post-header" data-astro-cid-tldeq5d5><a href="/blog" class="blog-back mono invert-hover" data-astro-cid-tldeq5d5>← back</a><h1 class="blog-post-title" data-astro-cid-tldeq5d5>MDX Cheatsheet</h1><div class="blog-post-meta" data-astro-cid-tldeq5d5><time datetime="2026-07-13T00:00:00.000Z" class="blog-post-date mono" data-astro-cid-tldeq5d5>// 2026-07-13</time><span class="blog-post-reading-time mono" data-astro-cid-tldeq5d5>9 min read</span></div><div class="blog-post-tags" data-astro-cid-tldeq5d5><span class="blog-tag mono" data-astro-cid-tldeq5d5>mdx</span><span class="blog-tag mono" data-astro-cid-tldeq5d5>cheatsheet</span><span class="blog-tag mono" data-astro-cid-tldeq5d5>reference</span><span class="blog-tag mono" data-astro-cid-tldeq5d5>draft</span></div></div><div class="blog-post-content" data-astro-cid-tldeq5d5><div class="cheatsheet"><p>A comprehensive reference of everything you can do with MDX in this blog. Use this as a go-to when writing new posts.</p><h2 id="1-standard-markdown">1. Standard Markdown</h2><h3 id="headings">Headings</h3><p>Use <code>##</code> for sections and <code>###</code> for subsections. Avoid <code>#</code> — the post title already serves as h1.</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Second-level heading</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Third-level heading</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">#### Fourth-level heading</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">##### Fifth-level heading</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">###### Sixth-level heading</span></span></code></pre><h4 id="fourth-level-heading">Fourth-level heading</h4><h5 id="fifth-level-heading">Fifth-level heading</h5><h6 id="sixth-level-heading">Sixth-level heading</h6><h3 id="paragraphs">Paragraphs</h3><p>Regular paragraphs are just lines of text separated by blank lines. You can write long-form content here without any special syntax.</p><p>This is a second paragraph. Each block of text separated by a blank line becomes its own <code>&lt;p&gt;</code> element.</p><h3 id="text-formatting">Text Formatting</h3><p><strong>Bold text</strong> using double asterisks.</p><p><em>Italic text</em> using single asterisks.</p><p><em><strong>Bold and italic</strong></em> using triple asterisks.</p><p><del>Strikethrough text</del> using double tildes.</p><h3 id="links">Links</h3><p><a href="https://example.com">External link</a> using standard Markdown syntax.</p><p><a href="https://example.com" title="Hover title">Link with title</a> with an optional title attribute.</p><h3 id="images">Images</h3><p><img src="https://picsum.photos/800/400" alt="Alt text describing the image"/></p><p>Images support alt text, which is important for accessibility.</p><h3 id="unordered-lists">Unordered Lists</h3><ul>
+<li>First item</li>
+<li>Second item
+<ul>
+<li>Nested item A</li>
+<li>Nested item B
+<ul>
+<li>Deeply nested item</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Third item</li>
+</ul><h3 id="ordered-lists">Ordered Lists</h3><ol>
+<li>First step</li>
+<li>Second step</li>
+<li>Third step
+<ol>
+<li>Sub-step A</li>
+<li>Sub-step B</li>
+</ol>
+</li>
+<li>Fourth step</li>
+</ol><h3 id="blockquotes">Blockquotes</h3><blockquote>
+<p>This is a blockquote. Use it for callouts, citations, or to highlight important information.</p>
+</blockquote><blockquote>
+<p>Nested blockquotes are also possible:</p>
+<blockquote>
+<p>This is a nested blockquote inside another one.</p>
+</blockquote>
+<p>Back to the first level.</p>
+</blockquote><h3 id="horizontal-rules">Horizontal Rules</h3><p>Use three or more dashes, asterisks, or underscores:</p><hr/><h3 id="line-breaks">Line Breaks</h3><p>Add two spaces at the end of a line<br/>
+to create a line break without starting a new paragraph.</p><h2 id="2-code">2. Code</h2><h3 id="inline-code">Inline Code</h3><p>Use backticks for inline code: <code>const x = 1</code>, <code>npm run build</code>, <code>git commit -m &quot;msg&quot;</code>.</p><h3 id="fenced-code-blocks">Fenced Code Blocks</h3><p>Use triple backticks with a language identifier for syntax highlighting.</p><h4 id="javascript">JavaScript</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> fibonacci</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">n</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (n </span><span style="color:#F97583">&lt;=</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">return</span><span style="color:#E1E4E8"> n;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#B392F0"> fibonacci</span><span style="color:#E1E4E8">(n </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#B392F0"> fibonacci</span><span style="color:#E1E4E8">(n </span><span style="color:#F97583">-</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> result</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> fibonacci</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`Fibonacci(10) = ${</span><span style="color:#E1E4E8">result</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span></code></pre><h4 id="typescript">TypeScript</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#F97583">interface</span><span style="color:#B392F0"> User</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#FFAB70">  id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  name</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  email</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#FFAB70">  role</span><span style="color:#F97583">:</span><span style="color:#9ECBFF"> &quot;admin&quot;</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> &quot;editor&quot;</span><span style="color:#F97583"> |</span><span style="color:#9ECBFF"> &quot;viewer&quot;</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">async</span><span style="color:#F97583"> function</span><span style="color:#B392F0"> fetchUser</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">id</span><span style="color:#F97583">:</span><span style="color:#79B8FF"> string</span><span style="color:#E1E4E8">)</span><span style="color:#F97583">:</span><span style="color:#B392F0"> Promise</span><span style="color:#E1E4E8">&lt;</span><span style="color:#B392F0">User</span><span style="color:#E1E4E8">&gt; {</span></span>
+<span class="line"><span style="color:#F97583">  const</span><span style="color:#79B8FF"> response</span><span style="color:#F97583"> =</span><span style="color:#F97583"> await</span><span style="color:#B392F0"> fetch</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">`/api/users/${</span><span style="color:#E1E4E8">id</span><span style="color:#9ECBFF">}`</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">response.ok) </span><span style="color:#F97583">throw</span><span style="color:#F97583"> new</span><span style="color:#B392F0"> Error</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">&quot;Failed to fetch user&quot;</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> response.</span><span style="color:#B392F0">json</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><h4 id="python">Python</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="python"><code><span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> dataclasses </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> dataclass</span></span>
+<span class="line"><span style="color:#F97583">from</span><span style="color:#E1E4E8"> typing </span><span style="color:#F97583">import</span><span style="color:#E1E4E8"> Optional</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">@dataclass</span></span>
+<span class="line"><span style="color:#F97583">class</span><span style="color:#B392F0"> Config</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">    host: </span><span style="color:#79B8FF">str</span><span style="color:#F97583"> =</span><span style="color:#9ECBFF"> &quot;localhost&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    port: </span><span style="color:#79B8FF">int</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 8080</span></span>
+<span class="line"><span style="color:#E1E4E8">    debug: </span><span style="color:#79B8FF">bool</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> False</span></span>
+<span class="line"><span style="color:#E1E4E8">    api_key: Optional[</span><span style="color:#79B8FF">str</span><span style="color:#E1E4E8">] </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> None</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    def</span><span style="color:#B392F0"> validate</span><span style="color:#E1E4E8">(self) -&gt; </span><span style="color:#79B8FF">bool</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#F97583">        return</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.port </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 0</span><span style="color:#F97583"> and</span><span style="color:#79B8FF"> self</span><span style="color:#E1E4E8">.port </span><span style="color:#F97583">&lt;</span><span style="color:#79B8FF"> 65536</span></span></code></pre><h4 id="bash">Bash</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D">#!/bin/bash</span></span>
+<span class="line"><span style="color:#79B8FF">set</span><span style="color:#79B8FF"> -euo</span><span style="color:#9ECBFF"> pipefail</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Deploy the application</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;Starting deployment...&quot;</span></span>
+<span class="line"><span style="color:#B392F0">docker</span><span style="color:#9ECBFF"> compose</span><span style="color:#9ECBFF"> build</span><span style="color:#79B8FF"> --no-cache</span></span>
+<span class="line"><span style="color:#B392F0">docker</span><span style="color:#9ECBFF"> compose</span><span style="color:#9ECBFF"> up</span><span style="color:#79B8FF"> -d</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;Deployment complete on port ${</span><span style="color:#E1E4E8">PORT</span><span style="color:#F97583">:-</span><span style="color:#E1E4E8">8080</span><span style="color:#9ECBFF">}&quot;</span></span></code></pre><h4 id="hcl-terraform">HCL (Terraform)</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="hcl"><code><span class="line"><span style="color:#B392F0">resource</span><span style="color:#79B8FF"> &quot;aws_instance&quot;</span><span style="color:#79B8FF"> &quot;web&quot;</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">  ami</span><span style="color:#F97583">           =</span><span style="color:#E1E4E8"> var</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">ami_id</span></span>
+<span class="line"><span style="color:#E1E4E8">  instance_type</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> var</span><span style="color:#F97583">.</span><span style="color:#E1E4E8">instance_type</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">  tags</span><span style="color:#F97583"> =</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    Name        </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> &quot;web-server&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">    Environment </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> var.environment</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">  lifecycle</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#E1E4E8">    create_before_destroy</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> true</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><h4 id="sql">SQL</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="sql"><code><span class="line"><span style="color:#F97583">SELECT</span></span>
+<span class="line"><span style="color:#79B8FF">  u</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">name</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  COUNT</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">o</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">id</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">AS</span><span style="color:#E1E4E8"> order_count,</span></span>
+<span class="line"><span style="color:#79B8FF">  SUM</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">o</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">total</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">AS</span><span style="color:#E1E4E8"> total_spent</span></span>
+<span class="line"><span style="color:#F97583">FROM</span><span style="color:#E1E4E8"> users u</span></span>
+<span class="line"><span style="color:#F97583">LEFT JOIN</span><span style="color:#E1E4E8"> orders o </span><span style="color:#F97583">ON</span><span style="color:#79B8FF"> u</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">id</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> o</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">user_id</span></span>
+<span class="line"><span style="color:#F97583">WHERE</span><span style="color:#79B8FF"> u</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">created_at</span><span style="color:#F97583"> &gt;=</span><span style="color:#9ECBFF"> &#39;2026-01-01&#39;</span></span>
+<span class="line"><span style="color:#F97583">GROUP BY</span><span style="color:#79B8FF"> u</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">id</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">u</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">name</span></span>
+<span class="line"><span style="color:#F97583">HAVING</span><span style="color:#79B8FF"> COUNT</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">o</span><span style="color:#E1E4E8">.</span><span style="color:#79B8FF">id</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">&gt;</span><span style="color:#79B8FF"> 5</span></span>
+<span class="line"><span style="color:#F97583">ORDER BY</span><span style="color:#E1E4E8"> total_spent </span><span style="color:#F97583">DESC</span></span>
+<span class="line"><span style="color:#F97583">LIMIT</span><span style="color:#79B8FF"> 10</span><span style="color:#E1E4E8">;</span></span></code></pre><h4 id="json">JSON</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;name&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;my-project&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;version&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;1.0.0&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;dependencies&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;astro&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;^5.0.0&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;@astrojs/mdx&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;^4.0.0&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  },</span></span>
+<span class="line"><span style="color:#79B8FF">  &quot;scripts&quot;</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;dev&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;astro dev&quot;</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    &quot;build&quot;</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;astro build&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><h4 id="yaml">YAML</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">server</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  host</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">0.0.0.0</span></span>
+<span class="line"><span style="color:#85E89D">  port</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3000</span></span>
+<span class="line"><span style="color:#85E89D">  cors</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    origins</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">https://example.com</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#9ECBFF">https://app.example.com</span></span>
+<span class="line"><span style="color:#85E89D">    credentials</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#85E89D">  rate_limit</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    window</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">1m</span></span>
+<span class="line"><span style="color:#85E89D">    max_requests</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">100</span></span></code></pre><h4 id="css">CSS</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="css"><code><span class="line"><span style="color:#B392F0">.container</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">  display</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">grid</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  grid-template-columns</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">repeat</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">auto-fit</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">minmax</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">300</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">1</span><span style="color:#F97583">fr</span><span style="color:#E1E4E8">));</span></span>
+<span class="line"><span style="color:#79B8FF">  gap</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">var</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">--space-lg</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">  padding</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">var</span><span style="color:#E1E4E8">(</span><span style="color:#FFAB70">--space-xl</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">@media</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">max-width</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">768</span><span style="color:#F97583">px</span><span style="color:#E1E4E8">) {</span></span>
+<span class="line"><span style="color:#B392F0">  .container</span><span style="color:#E1E4E8"> {</span></span>
+<span class="line"><span style="color:#79B8FF">    grid-template-columns</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">1</span><span style="color:#F97583">fr</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">  }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre><h4 id="html">HTML</h4><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&lt;!</span><span style="color:#85E89D">DOCTYPE</span><span style="color:#B392F0"> html</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">html</span><span style="color:#B392F0"> lang</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;en&quot;</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> charset</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;UTF-8&quot;</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">meta</span><span style="color:#B392F0"> name</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;viewport&quot;</span><span style="color:#B392F0"> content</span><span style="color:#E1E4E8">=</span><span style="color:#9ECBFF">&quot;width=device-width, initial-scale=1.0&quot;</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">&gt;My Page&lt;/</span><span style="color:#85E89D">title</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">head</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;Hello World&lt;/</span><span style="color:#85E89D">h1</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">    &lt;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;This is a simple HTML document.&lt;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;/</span><span style="color:#85E89D">main</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">body</span><span style="color:#E1E4E8">&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/</span><span style="color:#85E89D">html</span><span style="color:#E1E4E8">&gt;</span></span></code></pre><h3 id="line-highlighting">Line Highlighting</h3><p>Astro supports code block line highlighting with the <code>ins</code> and <code>del</code> markers:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> a</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">;      </span><span style="color:#6A737D">// highlighted</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> b</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> c</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">;      </span><span style="color:#6A737D">// highlighted</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> d</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">;      </span><span style="color:#6A737D">// highlighted</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> e</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 5</span><span style="color:#E1E4E8">;      </span><span style="color:#6A737D">// highlighted</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> f</span><span style="color:#F97583"> =</span><span style="color:#79B8FF"> 6</span><span style="color:#E1E4E8">;</span></span></code></pre><h2 id="3-tables">3. Tables</h2><h3 id="basic-table">Basic Table</h3><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Markdown</th>
+<th>MDX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Components</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>JSX</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Imports</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table><h3 id="table-with-alignment">Table with Alignment</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Left</th>
+<th style="text-align:center">Center</th>
+<th style="text-align:right">Right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Aligned left</td>
+<td style="text-align:center">Aligned center</td>
+<td style="text-align:right">Aligned right</td>
+</tr>
+<tr>
+<td style="text-align:left">Item 2</td>
+<td style="text-align:center">Item 2</td>
+<td style="text-align:right">Item 2</td>
+</tr>
+<tr>
+<td style="text-align:left">Item 3</td>
+<td style="text-align:center">Item 3</td>
+<td style="text-align:right">Item 3</td>
+</tr>
+</tbody>
+</table><h3 id="complex-table-with-inline-formatting">Complex Table with Inline Formatting</h3><table>
+<thead>
+<tr>
+<th>Method</th>
+<th style="text-align:center">Complexity</th>
+<th style="text-align:center"><strong>In-place?</strong></th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bubble Sort</td>
+<td style="text-align:center">O(n^2)</td>
+<td style="text-align:center">Yes</td>
+<td>Simple but <em>slow</em> for large inputs</td>
+</tr>
+<tr>
+<td>Merge Sort</td>
+<td style="text-align:center">O(n log n)</td>
+<td style="text-align:center">No</td>
+<td>Stable, needs <code>O(n)</code> extra space</td>
+</tr>
+<tr>
+<td>Quick Sort</td>
+<td style="text-align:center">O(n log n)</td>
+<td style="text-align:center">Yes</td>
+<td>Fast in practice, worst case O(n^2)</td>
+</tr>
+<tr>
+<td>Heap Sort</td>
+<td style="text-align:center">O(n log n)</td>
+<td style="text-align:center">Yes</td>
+<td>Not stable, consistent performance</td>
+</tr>
+</tbody>
+</table><h2 id="4-html-in-mdx">4. HTML in MDX</h2><p>MDX allows raw HTML alongside Markdown. Useful for elements Markdown doesn’t support.</p><h3 id="collapsible-sections">Collapsible Sections</h3><details><summary>Click to expand</summary><p>This content is hidden by default. You can put <strong>any Markdown</strong> inside a <code>&lt;details&gt;</code> block, including:</p><ul>
+<li>Lists</li>
+<li>Code blocks</li>
+<li>Even other HTML elements</li>
+</ul></details><details><summary>Another collapsible section</summary><p>You can nest multiple <code>&lt;details&gt;</code> blocks. Each one toggles independently.</p></details><h3 id="keyboard-shortcuts">Keyboard Shortcuts</h3><p>Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> to open the command palette.</p><p>Other examples: <kbd>Enter</kbd>, <kbd>Esc</kbd>, <kbd>Alt</kbd> + <kbd>F4</kbd>.</p><h3 id="highlighted-text">Highlighted Text</h3><p>This is <mark>highlighted text</mark> using the <code>&lt;mark&gt;</code> element. Useful for drawing attention to specific parts of a sentence.</p><h3 id="subscript-and-superscript">Subscript and Superscript</h3><p>Water is H<sub>2</sub>O. Einstein’s famous equation is E = mc<sup>2</sup>.</p><p>The <sup>th</sup> item in a list, or references like See footnote<sup>1</sup>.</p><h3 id="abbreviations">Abbreviations</h3><p>The <abbr title="World Wide Web Consortium">W3C</abbr> maintains web standards. The <abbr title="HyperText Markup Language">HTML</abbr> specification is published by the <abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>.</p><h3 id="definition-lists">Definition Lists</h3><dl><dt>MDX</dt><dd>Markdown + JSX. A format that lets you use JSX components directly inside Markdown files.</dd><dt>Astro</dt><dd>A static site generator that supports multiple UI frameworks and ships zero JavaScript by default.</dd><dt>Content Collections</dt><dd>Astro’s way of organizing, validating, and rendering content from the <code>src/content</code> directory.</dd></dl><h2 id="5-jsx-expressions">5. JSX Expressions</h2><h3 id="inline-expressions">Inline Expressions</h3><p>Basic arithmetic: 2</p><p>String operations: HELLO</p><p>Current year: 2026</p><h3 id="conditional-rendering">Conditional Rendering</h3>This text is visible because the condition is true.This shows because the condition is false.<h3 id="template-literals-in-jsx">Template Literals in JSX</h3>This post was written on Monday, July 13, 2026<h3 id="variable-interpolation-from-frontmatter">Variable Interpolation from Frontmatter</h3><p>In Astro content collections, access frontmatter via the <code>props</code> object in <code>.mdx</code> files:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mdx"><code><span class="line"><span style="color:#9ECBFF">---</span></span>
+<span class="line"><span style="color:#85E89D">title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;My Post&quot;</span></span>
+<span class="line"><span style="color:#85E89D">date</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2026-07-13</span></span>
+<span class="line"><span style="color:#85E89D">tags</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;astro&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;mdx&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#9ECBFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Title: {props.title}</span></span>
+<span class="line"><span style="color:#E1E4E8">Date: {props.date}</span></span>
+<span class="line"><span style="color:#E1E4E8">Tags: {props.tags.join(&quot;, &quot;)}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Formatted date: {new Date(props.date).toLocaleDateString(&quot;en-US&quot;, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  year: &quot;numeric&quot;,</span></span>
+<span class="line"><span style="color:#E1E4E8">  month: &quot;long&quot;,</span></span>
+<span class="line"><span style="color:#E1E4E8">  day: &quot;numeric&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">})}</span></span></code></pre><h2 id="6-components">6. Components</h2><h3 id="importing-components">Importing Components</h3><p>In MDX files, you can import Astro or React components and use them directly:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mdx"><code><span class="line"><span style="color:#E1E4E8">import Callout from &#39;../../components/blog/Callout.astro&#39;;</span></span>
+<span class="line"><span style="color:#E1E4E8">import CodeGroup from &#39;../../components/blog/CodeGroup.astro&#39;;</span></span>
+<span class="line"><span style="color:#E1E4E8">import { Button } from &#39;../../components/ui/Button&#39;;</span></span></code></pre><h3 id="custom-callout-boxes">Custom Callout Boxes</h3><p>Below are callout-style boxes built with styled <code>&lt;div&gt;</code> elements. These demonstrate how to create component-like patterns using inline HTML + CSS classes.</p><div class="callout callout-info"><p><strong>Info:</strong> This is an info callout box. Use it for general information, context, or background details that help the reader understand the topic.</p></div><div class="callout callout-warning"><p><strong>Warning:</strong> This is a warning callout box. Use it to highlight potential pitfalls, deprecations, or things that could go wrong if the reader isn’t careful.</p></div><div class="callout callout-danger"><p><strong>Danger:</strong> This is a danger callout box. Use it for critical information — data loss risks, security vulnerabilities, or irreversible operations.</p></div><div class="callout callout-tip"><p><strong>Tip:</strong> This is a tip callout box. Use it for helpful shortcuts, best practices, or pro tips that improve the reader’s workflow.</p></div><h2 id="7-frontmatter-integration">7. Frontmatter Integration</h2><h3 id="accessing-frontmatter-data">Accessing Frontmatter Data</h3><p>In Astro content collections, frontmatter is available via <code>props</code> in <code>.mdx</code> files:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mdx"><code><span class="line"><span style="color:#9ECBFF">---</span></span>
+<span class="line"><span style="color:#85E89D">title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;My Post&quot;</span></span>
+<span class="line"><span style="color:#85E89D">date</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">2026-07-13</span></span>
+<span class="line"><span style="color:#85E89D">tags</span><span style="color:#E1E4E8">: [</span><span style="color:#9ECBFF">&quot;astro&quot;</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">&quot;mdx&quot;</span><span style="color:#E1E4E8">]</span></span>
+<span class="line"><span style="color:#9ECBFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Title: {props.title}</span></span>
+<span class="line"><span style="color:#E1E4E8">Date: {props.date}</span></span></code></pre><h3 id="date-formatting">Date Formatting</h3><p>Example of formatting dates from frontmatter:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mdx"><code><span class="line"><span style="color:#E1E4E8">Raw date: {String(props.date)}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Formatted: {new Date(props.date).toLocaleDateString(&quot;en-US&quot;, {</span></span>
+<span class="line"><span style="color:#E1E4E8">  year: &quot;numeric&quot;,</span></span>
+<span class="line"><span style="color:#E1E4E8">  month: &quot;long&quot;,</span></span>
+<span class="line"><span style="color:#E1E4E8">  day: &quot;numeric&quot;</span></span>
+<span class="line"><span style="color:#E1E4E8">})}</span></span></code></pre><h2 id="8-advanced-patterns">8. Advanced Patterns</h2><h3 id="nested-jsx-with-children">Nested JSX with Children</h3><div class="callout callout-tip"><p><strong>This is a nested JSX pattern.</strong></p><p>You can put full Markdown inside JSX elements, including:</p><ol>
+<li>Ordered lists</li>
+<li>With multiple items</li>
+</ol><p>And even <code>inline code</code> or code blocks:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> &quot;Hello from inside a JSX element&quot;</span></span></code></pre></div><h3 id="spreading-props">Spreading Props</h3><p>You can spread objects as props onto components:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mdx"><code><span class="line"><span style="color:#9ECBFF">---</span></span>
+<span class="line"><span style="color:#85E89D">calloutProps</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;warning&quot;</span></span>
+<span class="line"><span style="color:#85E89D">  title</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">&quot;Be careful&quot;</span></span>
+<span class="line"><span style="color:#9ECBFF">---</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">&lt;Callout {...props.calloutProps} /&gt;</span></span></code></pre><h3 id="using-fragments">Using Fragments</h3><p>Fragments let you group elements without adding a wrapper DOM node:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="mdx"><code><span class="line"><span style="color:#E1E4E8">&lt;&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;p&gt;First paragraph in a fragment.&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">  &lt;p&gt;Second paragraph — no extra wrapper div.&lt;/p&gt;</span></span>
+<span class="line"><span style="color:#E1E4E8">&lt;/&gt;</span></span></code></pre><h3 id="mdx-comments">MDX Comments</h3><p>Use JSX comment syntax to add comments that won’t render:</p><p>Visible text continues here.</p><h2 id="9-footnotes">9. Footnotes</h2><p>MDX supports footnotes through the remark-gfm plugin<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="true" aria-describedby="footnote-label">1</a></sup>. You can also use multiple footnotes in the same document<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="true" aria-describedby="footnote-label">2</a></sup>.</p><h2 id="10-math--katex">10. Math / KaTeX</h2><p>Math rendering is <strong>not currently configured</strong> in this blog, but it can be added with:</p><ul>
+<li><code>remark-math</code> — parses <code>$...$</code> and <code>$$...$$</code> syntax</li>
+<li><code>rehype-katex</code> — renders parsed math into HTML with KaTeX</li>
+</ul><p>Once configured, you’d write:</p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#E1E4E8">Inline math: $E = mc^2$</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">Block math:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$$</span></span>
+<span class="line"><span style="color:#E1E4E8">\sum_{i=1}^{n} i = \frac{n(n+1)}{2}</span></span>
+<span class="line"><span style="color:#E1E4E8">$$</span></span></code></pre><h2 id="11-custom-containers">11. Custom Containers</h2><p>Beyond the callout boxes in section 6, here are other container patterns using styled <code>&lt;div&gt;</code> elements:</p><div class="custom-container container-code"><p><strong>Code output:</strong></p><pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8;overflow-x:auto" tabindex="0" data-language="plaintext"><code><span class="line"><span>$ npm run build</span></span>
+<span class="line"><span>✓ Built in 1.23s</span></span></code></pre></div><div class="custom-container container-changelog"><p><strong>Changelog — v2.0.0</strong></p><ul>
+<li>Added MDX cheatsheet</li>
+<li>Improved code block styling</li>
+<li>Fixed table alignment on mobile</li>
+</ul></div><h2 id="12-embeds-and-media">12. Embeds and Media</h2><h3 id="youtube-embed">YouTube Embed</h3><div class="embed-container"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><h3 id="codesandbox-embed">CodeSandbox Embed</h3><div class="embed-container"><iframe src="https://codesandbox.io/embed/example?fontsize=14&amp;theme=dark" title="CodeSandbox embed" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; microphone; midi" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe></div></div>
+<section data-footnotes="true" class="footnotes"><h2 class="sr-only" id="footnote-label">Footnotes</h2>
+<ol>
+<li id="user-content-fn-1">
+<p>This is the first footnote. It appears at the bottom of the page. <a href="#user-content-fnref-1" data-footnote-backref aria-label="Back to reference 1" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p>And this is the second footnote. Footnotes are automatically numbered and linked. <a href="#user-content-fnref-2" data-footnote-backref aria-label="Back to reference 2" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section></div></article><footer class="footer" data-astro-cid-oenwriqq><div class="footer-container" data-astro-cid-oenwriqq><p class="footer-text mono" data-astro-cid-oenwriqq>© 2026 Daniel Cañadillas. All rights reserved.</p><div class="footer-links" data-astro-cid-oenwriqq><a href="https://github.com/kaecius" target="_blank" rel="noopener noreferrer" class="footer-link mono invert-hover" data-astro-cid-oenwriqq>GitHub</a><a href="https://www.linkedin.com/in/daniel-canadillas/" target="_blank" rel="noopener noreferrer" class="footer-link mono invert-hover" data-astro-cid-oenwriqq>LinkedIn</a></div></div></footer></body></html><script type="module">var e={en:{nav:{about:`About`,experience:`Experience`,education:`Education`,skills:`Skills`,projects:`Projects`,blog:`Blog`,contact:`Contact`},hero:{tagline:`Plan, Build, Validate`,subtagline:`Enabling teams through architecture, R&D, and agentic systems.`,socialLinks:`Links`},about:{title:`About`},exploring:{title:`Currently Exploring`},experience:{title:`Work Experience`},education:{title:`Education`},skills:{title:`Skills`},projects:{title:`Projects`,source:`Source`,demo:`Demo`,techStack:`Tech Stack`},contact:{title:`Contact`,email:`Email`,linkedin:`LinkedIn`,cta:`Let's build something together.`},footer:{copyright:`© {year} Daniel Cañadillas. All rights reserved.`},language:{en:`EN`,es:`ES`,switch:`Switch language`}},es:{nav:{about:`Sobre mí`,experience:`Experiencia`,education:`Educación`,skills:`Habilidades`,projects:`Proyectos`,blog:`Blog`,contact:`Contacto`},hero:{tagline:`Planifica, Construye, Valida`,subtagline:`Habilitando equipos a través de arquitectura, I+D y sistemas agenticos.`,socialLinks:`Enlaces`},about:{title:`Sobre mí`},exploring:{title:`Explorando Actualmente`},experience:{title:`Experiencia Laboral`},education:{title:`Educación`},skills:{title:`Habilidades`},projects:{title:`Proyectos`,source:`Código`,demo:`Demo`,techStack:`Tecnologías`},contact:{title:`Contacto`,email:`Correo`,linkedin:`LinkedIn`,cta:`Construyamos algo juntos.`},footer:{copyright:`© {year} Daniel Cañadillas. Todos los derechos reservados.`},language:{en:`EN`,es:`ES`,switch:`Cambiar idioma`}}};function t(t){return e[t]||e.en}function n(e,n){let r=e.split(`.`),i=t(n);for(let t of r)if(i&&typeof i==`object`&&t in i)i=i[t];else return e;return typeof i==`string`?i:e}function r(e){document.documentElement.lang=e,document.querySelectorAll(`[data-i18n]`).forEach(t=>{let r=t.getAttribute(`data-i18n`);if(r){let i=n(r,e);i!==r&&(t.textContent=i)}}),document.querySelectorAll(`.lang-en, .lang-es`).forEach(t=>{let n=t;e===`es`?n.classList.contains(`lang-es`)?n.style.display=``:n.classList.contains(`lang-en`)&&(n.style.display=`none`):n.classList.contains(`lang-en`)?n.style.display=``:n.classList.contains(`lang-es`)&&(n.style.display=`none`)})}function i(){let e=`portfolio-lang`;function t(){return typeof localStorage<`u`&&localStorage.getItem(e)||`en`}function n(t){typeof localStorage<`u`&&localStorage.setItem(e,t),r(t),document.dispatchEvent(new CustomEvent(`langchange`,{detail:t}))}r(t()),document.addEventListener(`langchange`,(e=>{r(e.detail)})),window.i18n={getStoredLang:t,setLang:n}}document.readyState===`loading`?document.addEventListener(`DOMContentLoaded`,i):i();</script>
